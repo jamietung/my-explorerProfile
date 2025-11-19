@@ -3,35 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 載入 Tailwind CSS 框架 -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>老董科學：牛頓 vs. 愛因斯坦 引力大戰</title>
+    <title>老董科學：統一理論與引力大戰</title>
     
-    <!-- 關鍵 SEO 元素 -->
-    <meta name="description" content="引力大戰！老董科學帶你探索牛頓的萬有引力與愛因斯坦的時空扭曲理論的精彩辯論。理解四大基本力中的引力概念。">
-    <meta name="keywords" content="引力, 萬有引力, 牛頓, 愛因斯坦, 強核力, 弱核力, 電磁力, 時空扭曲, 科學辯論, 老董科學">
+    <!-- 關鍵 SEO 元素，針對主要內容做優化 -->
+    <meta name="description" content="老董科學系列文章：從追求萬有理論的難點，到牛頓與愛因斯坦關於引力本質的世紀對決。在老之前搞懂科學！">
+    <meta name="keywords" content="萬有理論, 廣義相對論, 量子力學, 統一場論, 引力, 四大基本力, 牛頓, 愛因斯坦, 老董科學">
     <meta name="author" content="老董科學">
     
-    <!-- JSON-LD 結構化資料 (Schema Markup) - 改為文章類型 -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "老董科學：牛頓 vs. 愛因斯坦 引力大戰",
-      "author": {
-        "@type": "Person",
-        "name": "老董"
-      },
-      "datePublished": "2025-11-18",
-      "description": "一場關於引力本質的世紀對決：是力，還是時空結構？",
-      "keywords": "引力, 牛頓, 愛因斯坦, 時空扭曲, 老董科學"
-    }
-    </script>
-
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #eef2ff; /* 淺藍色背景，搭配科學主題 */
+            background-color: #eef2ff;
         }
         .speaker-newton {
             border-left: 4px solid #f97316; /* 橘色，代表經典物理 */
@@ -45,149 +28,283 @@
             border-left: 4px solid #3b82f6; /* 藍色，代表主持 */
             background-color: #eff6ff;
         }
+        /* 讓目錄連結看起來像按鈕 */
+        .article-link {
+            transition: all 0.2s;
+        }
+        .article-link.active {
+            color: #ffffff;
+            background-color: #3b82f6;
+            transform: scale(1.02);
+            font-weight: 600;
+        }
+        .article-link:not(.active):hover {
+            color: #1d4ed8;
+            background-color: #e0f2fe;
+        }
     </style>
 </head>
 <body class="p-4 sm:p-8">
 
-    <!-- 將容器寬度加大到 max-w-6xl 以容納側邊欄 -->
     <div class="max-w-6xl mx-auto bg-white shadow-2xl rounded-2xl p-6 md:p-10 border-t-8 border-blue-600">
         
-        <!-- FULL WIDTH HEADER -->
+        <!-- HEADER -->
         <header class="mb-8">
-            <!-- 核心標題 (H1) -->
             <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-2 tracking-tight text-center">
-                🔥 老董科學：牛頓 vs. 愛因斯坦 引力大戰 🔥
+                🧠 老董科學：在老之前搞「董」！
             </h1>
-            <p class="text-lg text-gray-600 text-center border-b pb-4">
-                上次說到世界有四大基本力，今天我們就來聊聊引力的本質吧！
+            <p id="article-subtitle" class="text-lg text-gray-600 text-center border-b pb-4">
+                <!-- 副標題將由 JS 動態更新 -->
             </p>
         </header>
 
-        <!-- RESPONSIVE GRID LAYOUT: 1 column on mobile, 4 columns on desktop (1 for sidebar, 3 for content) -->
+        <!-- RESPONSIVE GRID LAYOUT -->
         <div class="grid grid-cols-1 md:grid-cols-4 md:gap-8">
 
-            <!-- COLUMN 1: SIDEBAR (1/4 width on desktop) -->
+            <!-- COLUMN 1: SIDEBAR (文章目錄) -->
             <aside class="md:col-span-1 mb-8 md:mb-0">
                 <div class="bg-gray-50 p-4 rounded-xl shadow-inner border border-gray-200">
                     <h2 class="text-xl font-bold text-blue-700 mb-4 border-b pb-2">
-                        📚 舊文回顧 (老董科學)
+                        📚 文章目錄
                     </h2>
                     <nav class="space-y-3">
+                        <!-- Article 1 Link -->
+                        <a href="#" id="link-1" onclick="loadArticle(1); return false;" 
+                           class="article-link block text-gray-700 py-1 px-2 rounded-lg text-sm transition duration-150 active">
+                            <span class="font-medium">#1</span> 萬有理論：終極物理的兩大難題
+                        </a>
+                        <!-- Article 2 Link (Current Article) -->
+                        <a href="#" id="link-2" onclick="loadArticle(2); return false;" 
+                           class="article-link block text-gray-700 py-1 px-2 rounded-lg text-sm transition duration-150">
+                            <span class="font-medium">#2</span> 引力大戰！牛頓 vs. 愛因斯坦
+                        </a>
                         <!-- Placeholder Articles -->
-                        <a href="#" class="block text-gray-700 hover:text-blue-500 transition duration-150">
-                            <span class="font-medium text-sm">#1</span> 宇宙的四位大力士：四大基本力簡介
+                        <a href="#" class="block text-gray-400 hover:text-gray-500 transition duration-150 cursor-default">
+                            <span class="font-medium text-sm">#3</span> 程式設計師的老闆娘乘積 (預告)
                         </a>
-                        <a href="#" class="block text-gray-700 hover:text-blue-500 transition duration-150">
-                            <span class="font-medium text-sm">#2</span> $\pi$ 的極速點擊器：老董實測
-                        </a>
-                        <!-- Current Article Highlight -->
-                        <span class="block text-white bg-blue-500 py-1 px-2 rounded-lg text-sm font-semibold shadow-md">
-                            <span class="font-medium text-xs">#3</span> 引力大戰！牛頓 vs. 愛因斯坦 (本篇)
-                        </span>
-                        <a href="#" class="block text-gray-700 hover:text-blue-500 transition duration-150">
-                            <span class="font-medium text-sm">#4</span> 讓電腦算 $\pi$：程式設計師的老闆娘乘積 (預告)
-                        </a>
-                        <a href="#" class="block text-gray-700 hover:text-blue-500 transition duration-150">
-                            <span class="font-medium text-sm">#5</span> 為什麼火箭可以飛這麼高？（牛頓三大定律）
+                        <a href="#" class="block text-gray-400 hover:text-gray-500 transition duration-150 cursor-default">
+                            <span class="font-medium text-sm">#4</span> 為什麼火箭可以飛這麼高？
                         </a>
                     </nav>
                 </div>
             </aside>
             
-            <!-- COLUMN 2: MAIN CONTENT (3/4 width on desktop) -->
-            <main class="md:col-span-3">
-                
-                <!-- 辯論內容區塊 -->
-                <div class="space-y-6">
-
-                    <div class="p-4 rounded-lg shadow-md speaker-host">
-                        <p class="font-bold text-blue-700">大家好，歡迎來到「老董辯論場」上次說到這個世界有4大力，分別是引力、電磁力、強核力及弱核力，今天我們就來聊聊引力吧，讓我們歡迎重力發明者—牛頓，和IQ180的愛因斯坦！</p>
-                    </div>
-                    
-                    <div class="p-4 rounded-lg shadow-md speaker-newton">
-                        <p class="font-bold text-orange-700">牛頓：</p>
-                        <p class="text-gray-700">我可是牛頓，這局你就輸定了</p>
-                    </div>
-
-                    <div class="p-4 rounded-lg shadow-md speaker-einstein">
-                        <p class="font-bold text-green-700">愛因斯坦：</p>
-                        <p class="text-gray-700">IQ180的人怎麼可能輸給一頭小牛呢</p>
-                    </div>
-                    
-                    <div class="p-4 rounded-lg shadow-md speaker-newton">
-                        <p class="font-bold text-orange-700">牛頓：</p>
-                        <p class="text-gray-700">任何有質量的東西都有引力，質量越大引力就越大，距離越遠引力也越弱</p>
-                    </div>
-
-                    <div class="p-4 rounded-lg shadow-md speaker-einstein">
-                        <p class="font-bold text-green-700">愛因斯坦：</p>
-                        <p class="text-gray-700">「東西不會憑空出現或消失，力也是一樣」這句話是你自己說的，但一個有質量的物體卻可以憑空產生力，並把其他東西吸過來，這太扯了</p>
-                    </div>
-
-                    <div class="p-4 rounded-lg shadow-md speaker-newton">
-                        <p class="font-bold text-orange-700">牛頓：</p>
-                        <p class="text-gray-700">東西吸東西是正常現象，地球上任何物體不是都會被地球吸，哪裡扯了，所有觀眾都可以為我驗證這件事，難道你有更好的說法嗎</p>
-                    </div>
-
-                    <div class="p-4 rounded-lg shadow-md speaker-einstein">
-                        <p class="font-bold text-green-700">愛因斯坦：</p>
-                        <p class="text-gray-700">當然有！東西會往下掉是因為「有質量的物體會扭曲引力場，造成空間扭曲和時間扭曲，而物體就在引力場和時空扭曲之下看起來就像是往下掉，但這只是錯覺」</p>
-                    </div>
-
-                    <div class="p-4 rounded-lg shadow-md speaker-newton">
-                        <p class="font-bold text-orange-700">牛頓：</p>
-                        <p class="text-gray-700">抱歉潑你一把冷水，愛因「濕」坦，你把這世界說的好像科幻小說一樣，東西不會憑空出現或消失，但有質量的物體卻可以憑空產生重力場，還憑空扭曲時空，這樣講不是更矛盾嗎？</p>
-                    </div>
-
-                    <div class="p-4 rounded-lg shadow-md speaker-einstein">
-                        <p class="font-bold text-green-700">愛因斯坦：</p>
-                        <p class="text-gray-700">我的理論沒有問題，你的理論才奇怪，早就有科學家用你的公式去預測水星的移動路徑，結果算出來與實際觀測的不一樣，而用我的公式算就一模一樣，這證明了你的理論是錯的</p>
-                    </div>
-
-                    <div class="p-4 rounded-lg shadow-md speaker-newton">
-                        <p class="font-bold text-orange-700">牛頓：</p>
-                        <p class="text-gray-700">不要轉移話題...解釋剛才我說的</p>
-                    </div>
-
-                    <div class="p-4 rounded-lg shadow-md speaker-einstein">
-                        <p class="font-bold text-green-700">愛因斯坦：</p>
-                        <p class="text-gray-700">我的理論並沒有「憑空」變出任何東西，它只是重新定義了物質的「存在方式」。在你的理論中，你必須假設一個額外的、看不見的、叫做「力」的媒介，才能讓地球和太陽互相拉扯。這個「力」才是真正的憑空出現。</p>
-                    </div>
-
-                    <div class="p-4 rounded-lg shadow-md speaker-newton">
-                        <p class="font-bold text-orange-700">牛頓：</p>
-                        <p class="text-gray-700">如果你要堅持你的理論，那你遲早得告訴我「他到底憑什麼憑空扭曲時空」</p>
-                    </div>
-
-                    <div class="p-4 rounded-lg shadow-md speaker-einstein">
-                        <p class="font-bold text-green-700">愛因斯坦：</p>
-                        <p class="text-gray-700">「東西不會憑空出現或消失，力也是一樣」裡面只有提到東西和力，有質量的物體本身就可以扭曲時空，時空扭曲並不是由東西或力產生的，所以這不會違反任何物理定律</p>
-                    </div>
-                    
-                    <div class="p-4 rounded-lg shadow-md speaker-newton">
-                        <p class="font-bold text-orange-700">牛頓：</p>
-                        <p class="text-gray-700">.........</p>
-                    </div>
-
-                    <div class="p-4 rounded-lg shadow-md speaker-einstein">
-                        <p class="font-bold text-green-700">愛因斯坦：</p>
-                        <p class="text-gray-700">你的引力是假設出來的力，我的引力是物質存在所必然產生的幾何結構。哪一個更像「科幻小說」，我想觀眾們自有公斷！</p>
-                    </div>
-
-                    <div class="p-4 rounded-lg shadow-md speaker-host">
-                        <p class="font-bold text-blue-700">老董：</p>
-                        <p class="text-gray-700">真是一場精彩的對決！沒想到引力的發明者牛頓竟然輸給了愛因斯坦，那麼這次的勝利就獻給－愛因斯坦！記得關注「老董科學」在「老」之前搞「董」!</p>
-                    </div>
-
+            <!-- COLUMN 2: MAIN CONTENT (主內容區) -->
+            <main id="main-content" class="md:col-span-3">
+                <!-- Content will be injected here by JavaScript -->
+                <div class="text-center text-gray-500 pt-16">
+                    <svg class="animate-spin h-8 w-8 text-blue-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <p class="mt-2">文章載入中...</p>
                 </div>
             </main>
         </div>
 
         <!-- FOOTER (Full width) -->
         <footer class="mt-8 text-center text-gray-400 border-t pt-4">
-            <p>&copy; 2025 **老董科學** | 網頁由 Google Gemini 根據腳本建立並 SEO 優化</p>
+            <p>&copy; 2025 **老董科學** | 網頁由 Google Gemini 建立與維護</p>
         </footer>
 
     </div>
+
+    <script>
+        // *** JavaScript 程式碼：定義文章內容與切換邏輯 ***
+
+        // 1. 文章內容定義 (使用模板字串 `)
+        const articles = {
+            1: {
+                title: "萬有理論：終極物理的兩大難題",
+                subtitle: "一個單一的數學框架，能解釋宇宙的一切嗎？",
+                content: `
+                    <div class="space-y-6 text-gray-700">
+                        <p class="text-lg font-medium">
+                            萬有理論，是所有科學家的夢想，是物理學的終極目標。它的目標是找到一個單一的、終極的、優雅的數學框架（或一組方程式），用來統一描述我們宇宙中所有的基本作用力和所有的物質。宇宙間發生的一切，從宇宙大爆炸到你手上的手機運作，都可以用這套理論來解釋......這絕對非常難，但...到底難在哪？
+                        </p>
+                        
+                        <h3 class="text-2xl font-bold text-red-600 border-b pb-1">難點 1：宏觀 vs. 微觀的矛盾</h3>
+                        <p>
+                            在 1969 年，科學家提出了四大力：引力、電磁力、強核力、弱核力。他們是這個世界運作的原則，他們主要由 **2 個理論** 說明：
+                        </p>
+                        <ol class="list-decimal list-inside ml-4 space-y-2">
+                            <li>
+                                <span class="font-semibold text-blue-700">宏觀世界（重力）：</span> 由愛因斯坦的「廣義相對論」主宰，它說:
+                                <ul class="list-disc list-inside ml-4">
+                                    <li>宇宙是連續的 (不會斷斷續續)</li>
+                                    <li>引力是虛假的，只是時間和空間的扭曲</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="font-semibold text-green-700">微觀世界（其他三力）：</span> 由「量子力學」主宰，它說: 
+                                <ul class="list-disc list-inside ml-4">
+                                    <li>宇宙是斷斷續續的 (不會連續)</li>
+                                    <li>引力是真實的，就是粒子之間的傳遞</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        <p class="font-bold text-xl text-yellow-600 bg-yellow-50 p-3 rounded-lg border border-yellow-200">
+                            發現了嗎? 兩者非常矛盾，要提出萬有理論，就必須克服這兩點。
+                        </p>
+
+                        <h3 class="text-2xl font-bold text-red-600 border-b pb-1">難點 2：引力的弱小</h3>
+                        <p>
+                            在微觀的粒子尺度上，引力是弱到不可思議的。
+                        </p>
+                        <p>
+                            還記得磁鐵吸迴紋針吧! 小小一塊就可以吸起 5~10 根迴紋針，但迴紋針往下掉的是誰? 是整顆地球啊！這意味著一塊小磁鐵就可以抵過 **10 顆地球** 的引力！！（這就是引力，一個「超級虛弱」的大力士！）
+                        </p>
+                        <p>
+                            因為引力在微觀尺度上太弱了，我們幾乎無法在實驗室中測量它的量子效應。我們甚至從未探測到理論上傳遞引力的粒子——「引力子」，這讓科學家難以證明許多理論是不是對的。
+                        </p>
+
+                        <hr class="my-6 border-blue-200">
+                        <div class="p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-bold text-blue-700">老董總結：</p>
+                            <p>
+                                總而言之，現在科學界只要把引力和其他 3 種力統一就可以了，但這是非常困難的。期待哪天科學變得更發達，才能讓我們看見這個世界的真理。
+                            </p>
+                            <p class="mt-2 text-sm text-gray-500">
+                                下一篇文章將告訴你科學家想出了哪些理論，以解決目前遇到的問題，請關注「老董科學」在「老」之前搞「董」!
+                            </p>
+                        </div>
+                    </div>
+                `
+            },
+            2: {
+                title: "引力大戰！牛頓 vs. 愛因斯坦",
+                subtitle: "到底是『力』，還是『時空扭曲』？一場世紀辯論！",
+                content: `
+                    <!-- 辯論內容區塊 - 保持原來的樣式和結構 -->
+                    <div class="space-y-6">
+
+                        <div class="p-4 rounded-lg shadow-md speaker-host">
+                            <p class="font-bold text-blue-700">大家好，歡迎來到「老董辯論場」上次說到這個世界有4大力，分別是引力、電磁力、強核力及弱核力，今天我們就來聊聊引力吧，讓我們歡迎重力發明者—牛頓，和IQ180的愛因斯坦！</p>
+                        </div>
+                        
+                        <div class="p-4 rounded-lg shadow-md speaker-newton">
+                            <p class="font-bold text-orange-700">牛頓：</p>
+                            <p class="text-gray-700">我可是牛頓，這局你就輸定了</p>
+                        </div>
+
+                        <div class="p-4 rounded-lg shadow-md speaker-einstein">
+                            <p class="font-bold text-green-700">愛因斯坦：</p>
+                            <p class="text-gray-700">IQ180的人怎麼可能輸給一頭小牛呢</p>
+                        </div>
+                        
+                        <div class="p-4 rounded-lg shadow-md speaker-newton">
+                            <p class="font-bold text-orange-700">牛頓：</p>
+                            <p class="text-gray-700">任何有質量的東西都有引力，質量越大引力就越大，距離越遠引力也越弱</p>
+                        </div>
+
+                        <div class="p-4 rounded-lg shadow-md speaker-einstein">
+                            <p class="font-bold text-green-700">愛因斯坦：</p>
+                            <p class="text-gray-700">「東西不會憑空出現或消失，力也是一樣」這句話是你自己說的，但一個有質量的物體卻可以憑空產生力，並把其他東西吸過來，這太扯了</p>
+                        </div>
+
+                        <div class="p-4 rounded-lg shadow-md speaker-newton">
+                            <p class="font-bold text-orange-700">牛頓：</p>
+                            <p class="text-gray-700">東西吸東西是正常現象，地球上任何物體不是都會被地球吸，哪裡扯了，所有觀眾都可以為我驗證這件事，難道你有更好的說法嗎</p>
+                        </div>
+
+                        <div class="p-4 rounded-lg shadow-md speaker-einstein">
+                            <p class="font-bold text-green-700">愛因斯坦：</p>
+                            <p class="text-gray-700">當然有！東西會往下掉是因為「有質量的物體會扭曲引力場，造成空間扭曲和時間扭曲，而物體就在引力場和時空扭曲之下看起來就像是往下掉，但這只是錯覺」</p>
+                        </div>
+
+                        <div class="p-4 rounded-lg shadow-md speaker-newton">
+                            <p class="font-bold text-orange-700">牛頓：</p>
+                            <p class="text-gray-700">抱歉潑你一把冷水，愛因「濕」坦，你把這世界說的好像科幻小說一樣，東西不會憑空出現或消失，但有質量的物體卻可以憑空產生重力場，還憑空扭曲時空，這樣講不是更矛盾嗎？</p>
+                        </div>
+
+                        <div class="p-4 rounded-lg shadow-md speaker-einstein">
+                            <p class="font-bold text-green-700">愛因斯坦：</p>
+                            <p class="text-gray-700">我的理論沒有問題，你的理論才奇怪，早就有科學家用你的公式去預測水星的移動路徑，結果算出來與實際觀測的不一樣，而用我的公式算就一模一樣，這證明了你的理論是錯的</p>
+                        </div>
+
+                        <div class="p-4 rounded-lg shadow-md speaker-newton">
+                            <p class="font-bold text-orange-700">牛頓：</p>
+                            <p class="text-gray-700">不要轉移話題...解釋剛才我說的</p>
+                        </div>
+
+                        <div class="p-4 rounded-lg shadow-md speaker-einstein">
+                            <p class="font-bold text-green-700">愛因斯坦：</p>
+                            <p class="text-gray-700">我的理論並沒有「憑空」變出任何東西，它只是重新定義了物質的「存在方式」。在你的理論中，你必須假設一個額外的、看不見的、叫做「力」的媒介，才能讓地球和太陽互相拉扯。這個「力」才是真正的憑空出現。</p>
+                        </div>
+
+                        <div class="p-4 rounded-lg shadow-md speaker-newton">
+                            <p class="font-bold text-orange-700">牛頓：</p>
+                            <p class="text-gray-700">如果你要堅持你的理論，那你遲早得告訴我「他到底憑什麼憑空扭曲時空」</p>
+                        </div>
+
+                        <div class="p-4 rounded-lg shadow-md speaker-einstein">
+                            <p class="font-bold text-green-700">愛因斯坦：</p>
+                            <p class="text-gray-700">「東西不會憑空出現或消失，力也是一樣」裡面只有提到東西和力，有質量的物體本身就可以扭曲時空，時空扭曲並不是由東西或力產生的，所以這不會違反任何物理定律</p>
+                        </div>
+                        
+                        <div class="p-4 rounded-lg shadow-md speaker-newton">
+                            <p class="font-bold text-orange-700">牛頓：</p>
+                            <p class="text-gray-700">.........</p>
+                        </div>
+
+                        <div class="p-4 rounded-lg shadow-md speaker-einstein">
+                            <p class="font-bold text-green-700">愛因斯坦：</p>
+                            <p class="text-gray-700">你的引力是假設出來的力，我的引力是物質存在所必然產生的幾何結構。哪一個更像「科幻小說」，我想觀眾們自有公斷！</p>
+                        </div>
+
+                        <div class="p-4 rounded-lg shadow-md speaker-host">
+                            <p class="font-bold text-blue-700">老董：</p>
+                            <p class="text-gray-700">真是一場精彩的對決！沒想到引力的發明者牛頓竟然輸給了愛因斯坦，那麼這次的勝利就獻給－愛因斯坦！記得關注「老董科學」在「老」之前搞「董」!</p>
+                        </div>
+
+                    </div>
+                `
+            }
+        };
+
+        let currentArticleId = 1; // 預設載入第 1 篇文章
+
+        const mainContentEl = document.getElementById('main-content');
+        const subtitleEl = document.getElementById('article-subtitle');
+
+        /**
+         * 根據 ID 載入並顯示文章內容
+         * @param {number} id - 文章 ID (1 或 2)
+         */
+        function loadArticle(id) {
+            if (!articles[id]) {
+                mainContentEl.innerHTML = `<div class="p-6 text-center text-red-500 bg-red-50 rounded-lg">找不到文章 ID: ${id}</div>`;
+                subtitleEl.textContent = "文章載入錯誤";
+                return;
+            }
+
+            // 1. 更新主內容
+            const article = articles[id];
+            // 在這裡可以加入一些視覺上的過場效果，例如漸出漸入
+            mainContentEl.style.opacity = 0;
+            setTimeout(() => {
+                mainContentEl.innerHTML = article.content;
+                subtitleEl.textContent = article.subtitle;
+                currentArticleId = id;
+
+                // 2. 更新側邊欄活躍狀態
+                document.querySelectorAll('.article-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                document.getElementById(`link-${id}`).classList.add('active');
+
+                // 3. 漸入效果
+                mainContentEl.style.opacity = 1;
+            }, 100); // 100 毫秒延遲
+        }
+
+        // 頁面載入完成後，載入預設文章 (Article #1)
+        window.onload = function() {
+            // 設定 CSS 轉換，讓漸出漸入效果順暢
+            mainContentEl.style.transition = 'opacity 0.2s ease-in-out';
+            loadArticle(currentArticleId); 
+        };
+
+    </script>
 </body>
 </html>
