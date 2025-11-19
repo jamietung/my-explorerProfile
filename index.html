@@ -6,9 +6,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>老董科學：統一理論與引力大戰</title>
     
-    <!-- 關鍵 SEO 元素，針對主要內容做優化 -->
-    <meta name="description" content="老董科學系列文章：從追求萬有理論的難點，到牛頓與愛因斯坦關於引力本質的世紀對決。在老之前搞懂科學！">
-    <meta name="keywords" content="萬有理論, 廣義相對論, 量子力學, 統一場論, 引力, 四大基本力, 牛頓, 愛因斯坦, 老董科學">
+    <!-- 核心 SEO 元素 -->
+    <meta name="description" content="老董科學系列文章：從追求萬有理論的難點，到迴圈量子引力與弦理論的對決，以及牛頓與愛因斯坦關於引力本質的精彩辯論。在老之前搞懂科學！">
+    <meta name="keywords" content="萬有理論, 廣義相對論, 量子力學, 迴圈量子引力, 弦理論, 四大基本力, 牛頓, 愛因斯坦, 老董科學">
     <meta name="author" content="老董科學">
     
     <style>
@@ -16,19 +16,29 @@
             font-family: 'Inter', sans-serif;
             background-color: #eef2ff;
         }
+        /* -- 角色對話框樣式 -- */
+        .speaker-host {
+            border-left: 4px solid #3b82f6; /* 藍色，主持 */
+            background-color: #eff6ff;
+        }
         .speaker-newton {
-            border-left: 4px solid #f97316; /* 橘色，代表經典物理 */
+            border-left: 4px solid #f97316; /* 橘色，牛頓/經典物理 */
             background-color: #fff7ed;
         }
         .speaker-einstein {
-            border-left: 4px solid #10b981; /* 綠色，代表相對論 */
+            border-left: 4px solid #10b981; /* 綠色，愛因斯坦/相對論 */
             background-color: #ecfdf5;
         }
-        .speaker-host {
-            border-left: 4px solid #3b82f6; /* 藍色，代表主持 */
-            background-color: #eff6ff;
+        .speaker-quantum {
+            border-left: 4px solid #6366f1; /* 靛藍色，量子學家 */
+            background-color: #eef2ff;
         }
-        /* 讓目錄連結看起來像按鈕 */
+        .speaker-string {
+            border-left: 4px solid #ec4899; /* 玫瑰紅，弦學家 */
+            background-color: #fdf2f8;
+        }
+
+        /* -- 目錄連結樣式 -- */
         .article-link {
             transition: all 0.2s;
         }
@@ -37,6 +47,10 @@
             background-color: #3b82f6;
             transform: scale(1.02);
             font-weight: 600;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+        .article-link:not(.active) {
+            color: #4b5563; /* 灰色文字 */
         }
         .article-link:not(.active):hover {
             color: #1d4ed8;
@@ -70,20 +84,22 @@
                     <nav class="space-y-3">
                         <!-- Article 1 Link -->
                         <a href="#" id="link-1" onclick="loadArticle(1); return false;" 
-                           class="article-link block text-gray-700 py-1 px-2 rounded-lg text-sm transition duration-150 active">
-                            <span class="font-medium">#1</span> 萬有理論：終極物理的兩大難題
+                           class="article-link block py-2 px-3 rounded-lg text-sm">
+                            <span class="font-bold">#1</span> 萬有理論：終極物理的兩大難題
                         </a>
-                        <!-- Article 2 Link (Current Article) -->
+                        <!-- Article 2 Link -->
                         <a href="#" id="link-2" onclick="loadArticle(2); return false;" 
-                           class="article-link block text-gray-700 py-1 px-2 rounded-lg text-sm transition duration-150">
-                            <span class="font-medium">#2</span> 引力大戰！牛頓 vs. 愛因斯坦
+                           class="article-link block py-2 px-3 rounded-lg text-sm">
+                            <span class="font-bold">#2</span> 宇宙設計圖之戰：量子 vs. 弦
+                        </a>
+                        <!-- Article 3 Link -->
+                        <a href="#" id="link-3" onclick="loadArticle(3); return false;" 
+                           class="article-link block py-2 px-3 rounded-lg text-sm">
+                            <span class="font-bold">#3</span> 引力大戰！牛頓 vs. 愛因斯坦
                         </a>
                         <!-- Placeholder Articles -->
-                        <a href="#" class="block text-gray-400 hover:text-gray-500 transition duration-150 cursor-default">
-                            <span class="font-medium text-sm">#3</span> 程式設計師的老闆娘乘積 (預告)
-                        </a>
-                        <a href="#" class="block text-gray-400 hover:text-gray-500 transition duration-150 cursor-default">
-                            <span class="font-medium text-sm">#4</span> 為什麼火箭可以飛這麼高？
+                        <a href="#" class="block text-gray-400 hover:text-gray-500 transition duration-150 py-2 px-3 text-sm cursor-default">
+                            <span class="font-medium">#4</span> 程式設計師的老闆娘乘積 (預告)
                         </a>
                     </nav>
                 </div>
@@ -91,7 +107,6 @@
             
             <!-- COLUMN 2: MAIN CONTENT (主內容區) -->
             <main id="main-content" class="md:col-span-3">
-                <!-- Content will be injected here by JavaScript -->
                 <div class="text-center text-gray-500 pt-16">
                     <svg class="animate-spin h-8 w-8 text-blue-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -172,6 +187,83 @@
                 `
             },
             2: {
+                title: "宇宙設計圖之戰：迴圈量子引力 vs. 弦理論",
+                subtitle: "是「樂高宇宙」還是「吉他宇宙」？兩大統一理論的終極對決！",
+                content: `
+                    <div class="space-y-6">
+
+                        <div class="p-4 rounded-lg shadow-md speaker-host">
+                            <p class="font-bold text-blue-700">老董：</p>
+                            <p>大家好！歡迎來到「老董辯論場」，上次我們聊到了萬有理論，它希望透過一條公式來解釋這世界運行的規則，但因為引力太弱、規則不合群，所以這條公式難以實現。今天就讓我們邀請兩位科學家來解決這些疑難雜症吧！讓我們歡迎…量子學家和…弦學家！</p>
+                        </div>
+
+                        <div class="p-4 rounded-lg shadow-md speaker-quantum">
+                            <p class="font-bold text-indigo-700">量子學家：</p>
+                            <p>聽聽我們的「迴圈量子引力」，因為引力太弱，也就是說它不合群，那我們就說只有引力合群，其他看似合群的全部都不合群，這就是所謂的「最不合群的不合群就是最合群」😎 <span class="text-sm text-gray-500">(拍手聲)</span></p>
+                        </div>
+                        
+                        <div class="p-4 rounded-lg shadow-md speaker-string">
+                            <p class="font-bold text-pink-700">弦學家：</p>
+                            <p>矛盾了，你說不合群最好，那你還讓引力合群。聽聽我們的「弦理論」，這四種力沒有一個合群，真正合群的是弦，它構成了所有的力！</p>
+                        </div>
+                        
+                        <div class="p-4 rounded-lg shadow-md speaker-host">
+                            <p class="font-bold text-blue-700">老董：</p>
+                            <p>好，精彩的繞口令，請停止😅</p>
+                        </div>
+
+                        <h3 class="text-xl font-extrabold text-gray-800 pt-4 border-b border-gray-300 pb-1">⚡ 回合一：時空的本質 (解決連續 vs. 離散的矛盾)</h3>
+
+                        <div class="p-4 rounded-lg shadow-md speaker-host">
+                            <p class="font-bold text-blue-700">老董：</p>
+                            <p>量子學家，您提到電腦。但牛頓和愛因斯坦都把時空視為連續的布料。請問，您的「迴圈量子引力」是如何解決時空到底是「連續」還是「像積木一樣離散」這個最大的矛盾？</p>
+                        </div>
+
+                        <div class="p-4 rounded-lg shadow-md speaker-quantum">
+                            <p class="font-bold text-indigo-700">量子學家：</p>
+                            <p>簡單！我們直接把時空「數位化」。人類最成功的發明是電腦，所以這個世界應該像電腦一樣，有像素、有幀數！</p>
+                            <p class="mt-2 text-indigo-600 font-semibold">我們的核心主張是： 空間和時間都是由最小、最小的「時空積木」編織而成的迴圈網絡。時空不是一塊連續的布，而是一堆樂高。引力就是這張樂高網絡的幾何形狀。我們直接讓時空遵守了量子力學「不連續」的規則，矛盾迎刃而解！</p>
+                        </div>
+                        
+                        <div class="p-4 rounded-lg shadow-md speaker-string">
+                            <p class="font-bold text-pink-700">弦學家：</p>
+                            <p>就算是「量」子「力」學也應該「量力」而為，這個世界是電腦嗎！世界是由弦組成的。</p>
+                            <p class="mt-2 text-pink-600 font-semibold">我的反擊是： 我們不需要把時空變成樂高！我們用一條弦來解決一切。這四種力，就像是一把吉他上的不同音符。弦用這種方式振動，產生電磁力；換一種方式振動，產生強核力；用一種特殊的振動方式，就產生了引力。所有的力都來自同一根弦，這才是真正的優雅統一！</p>
+                        </div>
+
+                        <h3 class="text-xl font-extrabold text-gray-800 pt-4 border-b border-gray-300 pb-1">🛡️ 回合二：維度的爭議與驗證 (解決引力太弱的難點)</h3>
+
+                        <div class="p-4 rounded-lg shadow-md speaker-host">
+                            <p class="font-bold text-blue-700">老董：</p>
+                            <p>兩位都提出了各自美麗的理論。但弦學家，您的理論需要 10 個維度才能成立，我們只看到 4 個！您要如何證明那多出來的 6 個維度不是憑空想像？</p>
+                        </div>
+
+                        <div class="p-4 rounded-lg shadow-md speaker-string">
+                            <p class="font-bold text-pink-700">弦學家：</p>
+                            <p>這 6 個維度當然不是憑空想像！它們只是「捲起來了」。</p>
+                            <p class="mt-2 text-pink-600 font-semibold">我們的解釋是： 想像一根水管。遠遠看，它只有長度（一維）。但靠近看，你會發現它有環繞的寬度。那 6 個維度就是以這種方式極其微小地捲曲，所以我們感受不到。但只有這 10 個維度齊全，我們才能消除引力計算時產生的所有數學錯誤！</p>
+                        </div>
+
+                        <div class="p-4 rounded-lg shadow-md speaker-quantum">
+                            <p class="font-bold text-indigo-700">量子學家：</p>
+                            <p class="italic text-gray-500">(不屑地笑)</p>
+                            <p>10 維！這就是你們的弱點！你們為了讓數學成立，就得假設一個無法被證明的夢想世界！</p>
+                            <p class="mt-2 text-indigo-600 font-semibold">我們的優勢是： 「迴圈量子引力」只需要我們現實中看到的 4 個維度！我們比你們更貼近真實。如果有一天，我們能測量到時空像像素一樣「跳動」的極微小證據，我們就能證明 LQG。而你們的弦理論，可能永遠只能活在數學公式裡！</p>
+                        </div>
+
+                        <h3 class="text-xl font-extrabold text-gray-800 pt-4 border-b border-gray-300 pb-1">✨ 結語：老董的最終提問</h3>
+
+                        <div class="p-4 rounded-lg shadow-md speaker-host">
+                            <p class="font-bold text-blue-700">老董：</p>
+                            <p>好，精彩的攻防！總而言之，迴圈量子引力試圖將時空數位化來修補矛盾，而弦理論則透過增加維度來重新定義宇宙。兩套理論都無法被完全證實。</p>
+                            <p class="mt-2 font-bold">各位觀眾，你覺得哪一個理論更像是宇宙的「終極設計圖」呢？你喜歡簡約真實的 4 維「樂高宇宙」，還是優雅宏大的 10 維「吉他宇宙」？</p>
+                            <p>在下方留言告訴我們。</p>
+                            <p class="mt-2 text-sm text-gray-500">請關注「老董科學」在「老」之前搞「董」!</p>
+                        </div>
+                    </div>
+                `
+            },
+            3: {
                 title: "引力大戰！牛頓 vs. 愛因斯坦",
                 subtitle: "到底是『力』，還是『時空扭曲』？一場世紀辯論！",
                 content: `
@@ -269,9 +361,10 @@
 
         /**
          * 根據 ID 載入並顯示文章內容
-         * @param {number} id - 文章 ID (1 或 2)
+         * @param {number} id - 文章 ID (1, 2, 或 3)
          */
         function loadArticle(id) {
+            id = parseInt(id); // 確保是數字
             if (!articles[id]) {
                 mainContentEl.innerHTML = `<div class="p-6 text-center text-red-500 bg-red-50 rounded-lg">找不到文章 ID: ${id}</div>`;
                 subtitleEl.textContent = "文章載入錯誤";
@@ -280,7 +373,8 @@
 
             // 1. 更新主內容
             const article = articles[id];
-            // 在這裡可以加入一些視覺上的過場效果，例如漸出漸入
+            
+            // 漸出效果
             mainContentEl.style.opacity = 0;
             setTimeout(() => {
                 mainContentEl.innerHTML = article.content;
@@ -295,7 +389,7 @@
 
                 // 3. 漸入效果
                 mainContentEl.style.opacity = 1;
-            }, 100); // 100 毫秒延遲
+            }, 200); // 200 毫秒延遲
         }
 
         // 頁面載入完成後，載入預設文章 (Article #1)
