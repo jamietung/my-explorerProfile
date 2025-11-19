@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>老董科學：統一理論與引力大戰</title>
+    <title>老董科學：分類目錄與手指運算術</title>
     
     <!-- 核心 SEO 元素 -->
-    <meta name="description" content="老董科學系列文章：從追求萬有理論的難點，到迴圈量子引力與弦理論的對決，以及牛頓與愛因斯坦關於引力本質的精彩辯論。在老之前搞懂科學！">
-    <meta name="keywords" content="萬有理論, 廣義相對論, 量子力學, 迴圈量子引力, 弦理論, 四大基本力, 牛頓, 愛因斯坦, 老董科學">
+    <meta name="description" content="老董科學部落格，文章涵蓋宇宙理論、量子物理、數學進位制與手指運算術。在老之前搞懂科學！">
+    <meta name="keywords" content="萬有理論, 迴圈量子引力, 弦理論, 牛頓, 愛因斯坦, 進位制, 手指運算術, 老董科學">
     <meta name="author" content="老董科學">
     
     <style>
@@ -41,6 +41,7 @@
         /* -- 目錄連結樣式 -- */
         .article-link {
             transition: all 0.2s;
+            cursor: pointer;
         }
         .article-link.active {
             color: #ffffff;
@@ -75,33 +76,42 @@
         <!-- RESPONSIVE GRID LAYOUT -->
         <div class="grid grid-cols-1 md:grid-cols-4 md:gap-8">
 
-            <!-- COLUMN 1: SIDEBAR (文章目錄) -->
+            <!-- COLUMN 1: SIDEBAR (文章目錄 - 分類) -->
             <aside class="md:col-span-1 mb-8 md:mb-0">
                 <div class="bg-gray-50 p-4 rounded-xl shadow-inner border border-gray-200">
                     <h2 class="text-xl font-bold text-blue-700 mb-4 border-b pb-2">
                         📚 文章目錄
                     </h2>
-                    <nav class="space-y-3">
-                        <!-- Article 1 Link -->
+                    
+                    <!-- 科學類文章 -->
+                    <h3 class="text-lg font-semibold text-gray-700 mt-4 mb-2">⚛️ 科學類 (宇宙與力)</h3>
+                    <nav class="space-y-2">
                         <a href="#" id="link-1" onclick="loadArticle(1); return false;" 
-                           class="article-link block py-2 px-3 rounded-lg text-sm">
+                           class="article-link block py-1.5 px-3 rounded-lg text-sm">
                             <span class="font-bold">#1</span> 萬有理論：終極物理的兩大難題
                         </a>
-                        <!-- Article 2 Link -->
                         <a href="#" id="link-2" onclick="loadArticle(2); return false;" 
-                           class="article-link block py-2 px-3 rounded-lg text-sm">
+                           class="article-link block py-1.5 px-3 rounded-lg text-sm">
                             <span class="font-bold">#2</span> 宇宙設計圖之戰：量子 vs. 弦
                         </a>
-                        <!-- Article 3 Link -->
                         <a href="#" id="link-3" onclick="loadArticle(3); return false;" 
-                           class="article-link block py-2 px-3 rounded-lg text-sm">
+                           class="article-link block py-1.5 px-3 rounded-lg text-sm">
                             <span class="font-bold">#3</span> 引力大戰！牛頓 vs. 愛因斯坦
                         </a>
-                        <!-- Placeholder Articles -->
-                        <a href="#" class="block text-gray-400 hover:text-gray-500 transition duration-150 py-2 px-3 text-sm cursor-default">
-                            <span class="font-medium">#4</span> 程式設計師的老闆娘乘積 (預告)
+                    </nav>
+                    
+                    <!-- 數學類文章 -->
+                    <h3 class="text-lg font-semibold text-gray-700 mt-4 mb-2">📐 數學類 (數字與運算)</h3>
+                    <nav class="space-y-2">
+                        <a href="#" id="link-101" onclick="loadArticle(101); return false;" 
+                           class="article-link block py-1.5 px-3 rounded-lg text-sm">
+                            <span class="font-bold">#4</span> 手指頭的極限：超進化進位制
+                        </a>
+                        <a href="#" id="link-102" class="block text-gray-400 hover:text-gray-500 transition duration-150 py-1.5 px-3 text-sm cursor-default">
+                            <span class="font-medium">#5</span> 程式設計師的老闆娘乘積 (預告)
                         </a>
                     </nav>
+
                 </div>
             </aside>
             
@@ -129,6 +139,7 @@
 
         // 1. 文章內容定義 (使用模板字串 `)
         const articles = {
+            // --- 科學類文章 ---
             1: {
                 title: "萬有理論：終極物理的兩大難題",
                 subtitle: "一個單一的數學框架，能解釋宇宙的一切嗎？",
@@ -351,17 +362,86 @@
 
                     </div>
                 `
-            }
+            },
+            // --- 數學類文章 ---
+            101: {
+                title: "手指頭的極限：超進化進位制",
+                subtitle: "從幼稚園到百萬大關，加法直式居然輸給了你的十根手指？",
+                content: `
+                    <div class="space-y-6 text-gray-700">
+                        <p class="text-lg font-medium">
+                            數字，是數學最重要的樑柱。有了數字，便有了加法，從單純的累加數字到瘋狂的泰勒級數，一切，就從加法開始。
+                        </p> 
+                        
+                        <h3 class="text-xl font-bold text-green-600 border-b pb-1 mt-6">--- 等級一：幼兒園大班 (進位制：10) ---</h3>
+                        <div class="pl-4 border-l-4 border-green-300 bg-green-50 p-3 rounded-lg">
+                            <p>幼兒園大班，我們學到了 5 以內的加法，老師會叫你搬出手指頭，2+3 就是左手比兩隻，右手比三隻，再算算你比的幾根手指頭，你會得到 5，而這就是答案。</p>
+                        </div>
+                        
+                        <h3 class="text-xl font-bold text-yellow-600 border-b pb-1 mt-6">--- 等級二：小學二年級 (進位制：10) ---</h3>
+                        <div class="pl-4 border-l-4 border-yellow-300 bg-yellow-50 p-3 rounded-lg">
+                            <p>小學二年級，我們學到了 100 以內的加法，因為數字太大了，老師會告訴你寫直式，看見黑板滿滿的數字，你有兩種選擇：</p>
+                            <ol class="list-disc list-inside ml-4 mt-2">
+                                <li>接受它</li>
+                                <li>繼續用手指頭</li>
+                            </ol>
+                            <p class="mt-2">回到正題，100 以內的加法已經沒辦法再用幼兒園的方式了。把幼兒園的方式稱為等級一，那這種就是等級二：</p>
+                            <p>我要算 $11+12$，左手比 $1$(代表十位)，右手比 $1$(代表個位) 接下來開始數 $1, 2, 3 \cdots$ 每數一次手指頭就加 $1$。數 $12$ 次後你就會得到 $23$。</p>
+                            <p class="mt-2 text-sm italic">但這種方法最高只能數到 $50+49$ (用兩隻手數 99 次)。難道這就是手指頭的極限了嗎？「用進廢退」我們會有 10 根手指頭就代表我們需要。那手指頭的極限是幾，100、500 還是 1000？並不對，都更高。</p>
+                        </div>
+                        
+                        <h3 class="text-xl font-bold text-indigo-600 border-b pb-1 mt-6">--- 等級三：小學三年級 (進位制：2) ---</h3>
+                        <div class="pl-4 border-l-4 border-indigo-300 bg-indigo-50 p-3 rounded-lg">
+                            <p>小學三年級，我們學到了 1000 以內的數，但是我們能夠用手指頭數到 1000 嗎？</p>
+                            <p>想像你有 10 根手指頭，第一隻寫 $2^0 = 1$、第二隻寫 $2^1 = 2$、第三隻寫 $2^2 = 4 \cdots$ 第十隻寫 $2^9 = 512$。如果你要寫 1 就把第一隻豎起來，要寫 3 就把第一隻和第二隻豎起來，因為 $1+2=3$。</p>
+                            <p class="mt-2 font-bold text-indigo-700">我們找找看這種方式的極限：</p>
+                            <p>它的極限就是全部豎起來，那這樣是幾呢？</p>
+                            <p class="text-center text-xl font-extrabold my-4">
+                                $1+2+4+8+\cdots+512 = \mathbf{1023}$！
+                            </p>
+                            <p>這個答案看起來非常厲害，但很快你就撐不下去了...</p>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-red-600 border-b pb-1 mt-6">--- 等級四：小學四年級 (進位制：3，平衡三進制啟發) ---</h3>
+                        <div class="pl-4 border-l-4 border-red-300 bg-red-50 p-3 rounded-lg">
+                            <p>小學四年級，我們學到了一萬以內的數，但手指頭只能數到 1023，完全不夠用，被加法直式逼入絕境的你，想出了無人能敵的方法。</p>
+                            <h4 class="font-extrabold text-lg mt-4 text-red-700">--- 前方高能 (變形進位制) ---</h4>
+                            <p class="mt-2">手指頭有**不豎起來**和**豎起來** (2種狀態，二進制)，但也可以有**豎一半**！</p>
+                            <p class="mt-2">把每根手指分成 **不豎起來 (0)**、**豎一半 (1)**、**全豎 (2)** (3種狀態，三進制)。</p>
+                            <p>第一隻手寫 $3^0=1$、第二隻寫 $3^1=3$、第三隻寫 $3^2=9\cdots$ 第十隻寫 $3^9=19683$。</p>
+                            <p>如果用 10 根手指頭（$N=10$），它的極限是：</p>
+                            <p class="text-center text-xl font-extrabold my-4">
+                                $2 \times (1+3+\cdots+3^9) = 3^{10} - 1 = \mathbf{59048}$！<span class="text-base font-normal">(約 6 萬)</span>
+                            </p>
+                            <p class="mt-4">但這是極限嗎? 不！</p>
+                            <p>把手指頭分成 5 種狀態 (五進制)，可以數到 $5^{10} - 1 = \mathbf{9765624}$ (1 千萬)！</p>
+                            <p>...要數到幾都沒問題，只要你的眼睛夠利，因此，手指頭是**沒有極限**的。</p>
+                        </div>
+                        
+                        <hr class="my-6 border-blue-200">
+                        <div class="p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-bold text-blue-700">老董總結：</p>
+                            <p>
+                                你知道嗎？最後兩種方法竟然跟我們電腦運算的 **進位制** 有關，還可以拿來轉換！
+                            </p>
+                            <p class="mt-2">以後考試遇到加法時，只有你沒有用直式，你就可以和老師說：</p>
+                            <p class="mt-2 text-center text-xl font-extrabold text-gray-800">
+                                「我沒有作弊，只是對數字做了一點『手術 (手指運算術)』」
+                            </p>
+                        </div>
+                    </div>
+                `
+            },
         };
 
-        let currentArticleId = 1; // 預設載入第 1 篇文章
+        let currentArticleId = 101; // 預設載入最新的文章
 
         const mainContentEl = document.getElementById('main-content');
         const subtitleEl = document.getElementById('article-subtitle');
 
         /**
          * 根據 ID 載入並顯示文章內容
-         * @param {number} id - 文章 ID (1, 2, 或 3)
+         * @param {number} id - 文章 ID
          */
         function loadArticle(id) {
             id = parseInt(id); // 確保是數字
@@ -385,14 +465,17 @@
                 document.querySelectorAll('.article-link').forEach(link => {
                     link.classList.remove('active');
                 });
-                document.getElementById(`link-${id}`).classList.add('active');
+                const activeLink = document.getElementById(`link-${id}`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
 
                 // 3. 漸入效果
                 mainContentEl.style.opacity = 1;
             }, 200); // 200 毫秒延遲
         }
 
-        // 頁面載入完成後，載入預設文章 (Article #1)
+        // 頁面載入完成後，載入預設文章
         window.onload = function() {
             // 設定 CSS 轉換，讓漸出漸入效果順暢
             mainContentEl.style.transition = 'opacity 0.2s ease-in-out';
