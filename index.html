@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>老董科學：分類目錄與手指運算術</title>
+    <title>老董科學：分類目錄與意見回饋</title>
     
     <!-- 核心 SEO 元素 -->
     <meta name="description" content="老董科學部落格，文章涵蓋宇宙理論、量子物理、數學進位制與手指運算術。在老之前搞懂科學！">
@@ -64,13 +64,19 @@
     <div class="max-w-6xl mx-auto bg-white shadow-2xl rounded-2xl p-6 md:p-10 border-t-8 border-blue-600">
         
         <!-- HEADER -->
-        <header class="mb-8">
+        <header class="mb-8 relative">
             <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-2 tracking-tight text-center">
                 🧠 老董科學：在老之前搞「董」！
             </h1>
             <p id="article-subtitle" class="text-lg text-gray-600 text-center border-b pb-4">
                 <!-- 副標題將由 JS 動態更新 -->
             </p>
+
+            <!-- 意見回饋按鈕 -->
+            <button onclick="openFeedbackModal()" 
+                    class="absolute top-0 right-0 sm:top-1/2 sm:-translate-y-1/2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 transform hover:scale-105 text-sm sm:text-base mt-2 sm:mt-0">
+                🚀 意見回饋
+            </button>
         </header>
 
         <!-- RESPONSIVE GRID LAYOUT -->
@@ -129,15 +135,119 @@
 
         <!-- FOOTER (Full width) -->
         <footer class="mt-8 text-center text-gray-400 border-t pt-4">
-            <p>&copy; 2025  老董科學  | 網頁由 Google Gemini 建立與維護</p>
+            <p>&copy; 2025 **老董科學** | 網頁由 Google Gemini 建立與維護</p>
         </footer>
 
     </div>
 
-    <script>
-        // *** JavaScript 程式碼：定義文章內容與切換邏輯 ***
+    <!-- 意見回饋 Modal 彈出視窗 -->
+    <div id="feedback-modal" class="fixed inset-0 bg-gray-900 bg-opacity-75 z-50 hidden items-center justify-center transition-opacity duration-300">
+        <div class="bg-white rounded-xl shadow-2xl p-6 w-11/12 max-w-lg transform transition-transform duration-300 scale-95">
+            
+            <div class="flex justify-between items-center border-b pb-3 mb-4">
+                <h2 class="text-2xl font-bold text-blue-600">📝 意見與改進建議</h2>
+                <button onclick="closeFeedbackModal()" class="text-gray-400 hover:text-gray-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
 
-        // 1. 文章內容定義 (使用模板字串 `)
+            <p class="text-gray-600 mb-4 text-sm">您的寶貴建議是讓「老董科學」變得更酷的燃料！</p>
+
+            <form id="feedback-form" onsubmit="sendFeedback(); return false;">
+                <div class="mb-4">
+                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">您的暱稱 (選填)</label>
+                    <input type="text" id="name" name="name" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150" placeholder="例如：熱愛科學的同學">
+                </div>
+                
+                <div class="mb-6">
+                    <label for="suggestion" class="block text-sm font-medium text-gray-700 mb-1">改進建議 (必填)</label>
+                    <textarea id="suggestion" name="suggestion" rows="4" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150" placeholder="告訴我哪裡可以改進，或者你希望下一篇是什麼主題！"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 rounded-lg shadow-md transition duration-300 transform hover:scale-[1.01]">
+                    ✉️ 開啟郵件客戶端送出
+                </button>
+                <p class="text-xs text-gray-400 mt-2 text-center">這將會使用您裝置上的郵件應用程式發送。</p>
+            </form>
+
+        </div>
+    </div>
+
+    <script>
+        // *** 郵件設定 (請替換為您的 Email 地址!) ***
+        const USER_EMAIL = "yoc.tung@gmail.com"; 
+
+        // *** Modal 相關功能 ***
+        const feedbackModal = document.getElementById('feedback-modal');
+
+        function openFeedbackModal() {
+            feedbackModal.classList.remove('hidden');
+            feedbackModal.classList.add('flex');
+            // 讓 Modal 內容有一個彈入的動畫效果
+            const content = feedbackModal.querySelector('div');
+            content.classList.remove('scale-95');
+            content.classList.add('scale-100');
+        }
+
+        function closeFeedbackModal() {
+            const content = feedbackModal.querySelector('div');
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+            
+            setTimeout(() => {
+                feedbackModal.classList.remove('flex');
+                feedbackModal.classList.add('hidden');
+            }, 300); // 配合 CSS 轉換時間
+        }
+
+        function sendFeedback() {
+            const name = document.getElementById('name').value.trim();
+            const suggestion = document.getElementById('suggestion').value.trim();
+
+            if (suggestion === "") {
+                // 這裡不用 alert，而是使用簡單的 UI 提示
+                const form = document.getElementById('feedback-form');
+                const errorMsg = document.createElement('p');
+                errorMsg.textContent = "請至少填寫建議內容！";
+                errorMsg.className = "text-red-500 text-sm mt-2";
+                form.appendChild(errorMsg);
+                setTimeout(() => form.removeChild(errorMsg), 3000);
+                return;
+            }
+
+            const senderName = name ? `來自 ${name}` : "匿名讀者";
+            const subject = encodeURIComponent(`老董科學 - 網站改進建議 (${senderName})`);
+            
+            // 格式化郵件內容
+            const bodyContent = `
+老董您好，
+
+我對「老董科學」網站的建議如下：
+==================================================
+
+${suggestion}
+
+==================================================
+感謝您的創作！
+
+寄件人暱稱: ${name || '匿名'}
+文章 ID: ${currentArticleId}
+            `.trim();
+            
+            const body = encodeURIComponent(bodyContent);
+
+            // 構建 mailto 連結
+            const mailtoLink = `mailto:${USER_EMAIL}?subject=${subject}&body=${body}`;
+
+            // 開啟郵件客戶端
+            window.location.href = mailtoLink;
+            
+            // 關閉 Modal (但因為 mailto 會跳轉，所以延遲執行以確保 mailto 先觸發)
+            setTimeout(closeFeedbackModal, 100);
+        }
+
+
+        // *** 文章內容定義與切換邏輯 (保留原文章) ***
         const articles = {
             // --- 科學類文章 ---
             1: {
@@ -151,7 +261,7 @@
                         
                         <h3 class="text-2xl font-bold text-red-600 border-b pb-1">難點 1：宏觀 vs. 微觀的矛盾</h3>
                         <p>
-                            在 1969 年，科學家提出了四大力：引力、電磁力、強核力、弱核力。他們是這個世界運作的原則，他們主要由  2 個理論  說明：
+                            在 1969 年，科學家提出了四大力：引力、電磁力、強核力、弱核力。他們是這個世界運作的原則，他們主要由 **2 個理論** 說明：
                         </p>
                         <ol class="list-decimal list-inside ml-4 space-y-2">
                             <li>
@@ -178,7 +288,7 @@
                             在微觀的粒子尺度上，引力是弱到不可思議的。
                         </p>
                         <p>
-                            還記得磁鐵吸迴紋針吧! 小小一塊就可以吸起 5~10 根迴紋針，但迴紋針往下掉的是誰? 是整顆地球啊！這意味著一塊小磁鐵就可以抵過  10 顆地球  的引力！！（這就是引力，一個「超級虛弱」的大力士！）
+                            還記得磁鐵吸迴紋針吧! 小小一塊就可以吸起 5~10 根迴紋針，但迴紋針往下掉的是誰? 是整顆地球啊！這意味著一塊小磁鐵就可以抵過 **10 顆地球** 的引力！！（這就是引力，一個「超級虛弱」的大力士！）
                         </p>
                         <p>
                             因為引力在微觀尺度上太弱了，我們幾乎無法在實驗室中測量它的量子效應。我們甚至從未探測到理論上傳遞引力的粒子——「引力子」，這讓科學家難以證明許多理論是不是對的。
@@ -386,18 +496,18 @@
                                 <li>繼續用手指頭</li>
                             </ol>
                             <p class="mt-2">回到正題，100 以內的加法已經沒辦法再用幼兒園的方式了。把幼兒園的方式稱為等級一，那這種就是等級二：</p>
-                            <p>我要算 11+12，左手比 1(代表十位)，右手比 1(代表個位) 接下來開始數 1, 2, 3...每數一次手指頭就加 1。數 12 次後你就會得到 23。</p>
-                            <p class="mt-2 text-sm italic">但這種方法最高只能數到 50+49 (用兩隻手數 99 次)。難道這就是手指頭的極限了嗎？「用進廢退」我們會有 10 根手指頭就代表我們需要。那手指頭的極限是幾，100、500 還是 1000？並不對，都更高。</p>
+                            <p>我要算 $11+12$，左手比 $1$(代表十位)，右手比 $1$(代表個位)接下來開始數 $1, 2, 3 \cdots$ 每數一次手指頭就加 $1$。數 $12$ 次後你就會得到 $23$。</p>
+                            <p class="mt-2 text-sm italic">但這種方法最高只能數到 $50+49$ (用兩隻手數 99 次)。難道這就是手指頭的極限了嗎？「用進廢退」我們會有 10 根手指頭就代表我們需要。那手指頭的極限是幾，100、500 還是 1000？並不對，都更高。</p>
                         </div>
                         
                         <h3 class="text-xl font-bold text-indigo-600 border-b pb-1 mt-6">--- 等級三：小學三年級 (進位制：2) ---</h3>
                         <div class="pl-4 border-l-4 border-indigo-300 bg-indigo-50 p-3 rounded-lg">
                             <p>小學三年級，我們學到了 1000 以內的數，但是我們能夠用手指頭數到 1000 嗎？</p>
-                            <p>想像你有 10 根手指頭，第一隻寫 2^0 = 1、第二隻寫 2^1 = 2、第三隻寫 2^2 = 4...第十隻寫 2^9 = 512。如果你要寫 1 就把第一隻豎起來，要寫 3 就把第一隻和第二隻豎起來，因為 1+2=3。</p>
+                            <p>想像你有 10 根手指頭，第一隻寫 $2^0 = 1$、第二隻寫 $2^1 = 2$、第三隻寫 $2^2 = 4 \cdots$ 第十隻寫 $2^9 = 512$。如果你要寫 1 就把第一隻豎起來，要寫 3 就把第一隻和第二隻豎起來，因為 $1+2=3$。</p>
                             <p class="mt-2 font-bold text-indigo-700">我們找找看這種方式的極限：</p>
                             <p>它的極限就是全部豎起來，那這樣是幾呢？</p>
                             <p class="text-center text-xl font-extrabold my-4">
-                                1+2+4+8+...+512 = 1023！
+                                $1+2+4+8+\cdots+512 = \mathbf{1023}$！
                             </p>
                             <p>這個答案看起來非常厲害，但很快你就撐不下去了...</p>
                         </div>
@@ -406,23 +516,23 @@
                         <div class="pl-4 border-l-4 border-red-300 bg-red-50 p-3 rounded-lg">
                             <p>小學四年級，我們學到了一萬以內的數，但手指頭只能數到 1023，完全不夠用，被加法直式逼入絕境的你，想出了無人能敵的方法。</p>
                             <h4 class="font-extrabold text-lg mt-4 text-red-700">--- 前方高能 (變形進位制) ---</h4>
-                            <p class="mt-2">手指頭有 不豎起來 和 豎起來  (2種狀態，二進制)，但也可以有 豎一半 ！</p>
-                            <p class="mt-2">把每根手指分成  不豎起來 (0) 、 豎一半 (1) 、 全豎 (2) (3種狀態，三進制)。</p>
-                            <p>第一隻手寫 3^0=1、第二隻寫 3^1=3、第三隻寫 3^2=9... 第十隻寫 3^9=19683。</p>
-                            <p>如果用 10 根手指頭（N=10），它的極限是：</p>
+                            <p class="mt-2">手指頭有**不豎起來**和**豎起來** (2種狀態，二進制)，但也可以有**豎一半**！</p>
+                            <p class="mt-2">把每根手指分成 **不豎起來 (0)**、**豎一半 (1)**、**全豎 (2)** (3種狀態，三進制)。</p>
+                            <p>第一隻手寫 $3^0=1$、第二隻寫 $3^1=3$、第三隻寫 $3^2=9\cdots$ 第十隻寫 $3^9=19683$。</p>
+                            <p>如果用 10 根手指頭（$N=10$），它的極限是：</p>
                             <p class="text-center text-xl font-extrabold my-4">
-                                (1+3+...+3^9) = 3^10 - 1 = 59048！<span class="text-base font-normal">(約 6 萬)</span>
+                                $2 \times (1+3+\cdots+3^9) = 3^{10} - 1 = \mathbf{59048}$！<span class="text-base font-normal">(約 6 萬)</span>
                             </p>
                             <p class="mt-4">但這是極限嗎? 不！</p>
-                            <p>把手指頭分成 5 種狀態 (五進制)，可以數到 5^{10} - 1 = 9765624 (1 千萬)！</p>
-                            <p>...要數到幾都沒問題，只要你的眼睛夠利，因此，手指頭是沒有極限的。</p>
+                            <p>把手指頭分成 5 種狀態 (五進制)，可以數到 $5^{10} - 1 = \mathbf{9765624}$ (1 千萬)！</p>
+                            <p>...要數到幾都沒問題，只要你的眼睛夠利，因此，手指頭是**沒有極限**的。</p>
                         </div>
                         
                         <hr class="my-6 border-blue-200">
                         <div class="p-4 rounded-lg bg-blue-50 border border-blue-200">
                             <p class="font-bold text-blue-700">老董總結：</p>
                             <p>
-                                你知道嗎？最後兩種方法竟然跟我們電腦運算的 進位制 有關，還可以拿來轉換！
+                                你知道嗎？最後兩種方法竟然跟我們電腦運算的 **進位制** 有關，還可以拿來轉換！
                             </p>
                             <p class="mt-2">以後考試遇到加法時，只有你沒有用直式，你就可以和老師說：</p>
                             <p class="mt-2 text-center text-xl font-extrabold text-gray-800">
@@ -465,10 +575,18 @@
                 document.querySelectorAll('.article-link').forEach(link => {
                     link.classList.remove('active');
                 });
+                // 處理不同 ID 範圍的連結
                 const activeLink = document.getElementById(`link-${id}`);
                 if (activeLink) {
                     activeLink.classList.add('active');
+                } else if (id >= 101) {
+                    // 確保數學類第一篇被選中，如果這是預設載入
+                    document.getElementById('link-101').classList.add('active');
+                } else {
+                    // 確保科學類第一篇被選中，如果這是預設載入
+                    document.getElementById('link-1').classList.add('active');
                 }
+
 
                 // 3. 漸入效果
                 mainContentEl.style.opacity = 1;
