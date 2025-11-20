@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入 Tailwind CSS 腳本 -->
     <script src="https://cdn.tailwindcss.com"></script>
     <title>老董科學：分類目錄與意見回饋</title>
     
     <!-- 核心 SEO 元素 -->
     <meta name="description" content="老董科學部落格，文章涵蓋宇宙理論、量子物理、數學進位制與手指運算術。在老之前搞懂科學！">
-    <meta name="keywords" content="萬有理論, 迴圈量子引力, 弦理論, 牛頓, 愛因斯坦, 進位制, 手指運算術, 老董科學">
+    <meta name="keywords" content="萬有理論, 迴圈量子引力, 弦理論, 牛頓, 愛因斯坦, 進位制, 手指運算術, 老董科學, Firebase, 登入">
     <meta name="author" content="老董科學">
     
     <style>
@@ -72,11 +73,20 @@
                 <!-- 副標題將由 JS 動態更新 -->
             </p>
 
-            <!-- 意見回饋按鈕 -->
-            <button onclick="openFeedbackModal()" 
-                    class="absolute top-0 right-0 sm:top-1/2 sm:-translate-y-1/2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 transform hover:scale-105 text-sm sm:text-base mt-2 sm:mt-0">
-                🚀 意見回饋
-            </button>
+            <!-- 登入/意見回饋區域 (新結構) -->
+            <div class="absolute top-0 right-0 sm:top-1/2 sm:-translate-y-1/2 flex items-center space-x-3 mt-2 sm:mt-0">
+                
+                <!-- 登入狀態/按鈕容器 -->
+                <div id="auth-status-container" class="text-sm font-semibold text-gray-600">
+                    <div class="animate-pulse text-xs text-gray-400">登入狀態載入中...</div>
+                </div>
+                
+                <!-- 意見回饋按鈕 -->
+                <button onclick="openFeedbackModal()" 
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 transform hover:scale-105 text-sm sm:text-base">
+                    🚀 意見回饋
+                </button>
+            </div>
         </header>
 
         <!-- RESPONSIVE GRID LAYOUT -->
@@ -155,8 +165,8 @@
 
             <form id="feedback-form" onsubmit="sendFeedback(); return false;">
                 <div class="mb-4">
-                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">您的暱稱 (選填)</label>
-                    <input type="text" id="name" name="name" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150" placeholder="例如：熱愛科學的同學">
+                    <label for="name" id="name-label" class="block text-sm font-medium text-gray-700 mb-1">您的暱稱 (選填)</label>
+                    <input type="text" id="name" name="name" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150" placeholder="例如：熱愛科學的同學" autocomplete="off">
                 </div>
                 
                 <div class="mb-6">
@@ -172,18 +182,183 @@
 
         </div>
     </div>
+    
+    <!-- 輕量 Toast 提示框 -->
+    <div id="toast-container" class="fixed top-5 right-5 z-[9999] space-y-2"></div>
 
-    <script>
+    <script type="module">
+        // 導入 Firebase 模組
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
         // *** 郵件設定 (請替換為您的 Email 地址!) ***
         const USER_EMAIL = "placeholder@example.com"; 
         
         // 文章的閱讀順序
         const articleOrder = [1, 2, 3, 101];
 
+        // Firebase Global Variables (MUST BE USED)
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        // Firebase 服務實例與狀態
+        let app, db, auth;
+        let userId = null; // 當前使用者 ID (null if not logged in)
+
+        // *** Firebase 認證與初始化 ***
+        async function initializeFirebaseAndAuth() {
+            try {
+                if (Object.keys(firebaseConfig).length === 0) {
+                    console.error("Firebase config is missing or invalid. Skipping Firebase init.");
+                    updateAuthStatusUI(false);
+                    return;
+                }
+                
+                // 1. 初始化 App 和服務
+                app = initializeApp(firebaseConfig);
+                auth = getAuth(app);
+                db = getFirestore(app);
+                setLogLevel('debug'); // 開啟 Firestore Debug Log
+
+                // 2. 設定 Auth 狀態監聽器
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        // 使用者已登入
+                        userId = user.uid;
+                        updateAuthStatusUI(true, userId);
+                    } else {
+                        // 使用者已登出
+                        userId = null;
+                        updateAuthStatusUI(false);
+                    }
+                });
+
+                // 3. 初始登入 (使用 Custom Token 或匿名登入)
+                if (initialAuthToken) {
+                    await signInWithCustomToken(auth, initialAuthToken);
+                } else {
+                    await signInAnonymously(auth);
+                }
+
+            } catch (error) {
+                console.error("Firebase 初始化或認證錯誤:", error);
+                updateAuthStatusUI(false);
+                showToast("連線失敗，請檢查網路。無法啟用登入功能。", "error");
+            }
+        }
+
+        /**
+         * 顯示暫時的提示框 (取代 alert)
+         * @param {string} message - 提示訊息
+         * @param {'info'|'success'|'error'} type - 提示類型
+         */
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.textContent = message;
+            
+            let bgColor = 'bg-gray-700';
+            let icon = '💡';
+            if (type === 'success') { bgColor = 'bg-green-500'; icon = '✅'; }
+            if (type === 'error') { bgColor = 'bg-red-500'; icon = '❌'; }
+
+            toast.innerHTML = `<span class="mr-2">${icon}</span>${message}`;
+            toast.className = `p-3 rounded-xl shadow-2xl text-white ${bgColor} transition-all duration-300 transform translate-x-full opacity-0`;
+            
+            container.appendChild(toast);
+
+            // Fade in and slide in
+            setTimeout(() => {
+                toast.style.transform = 'translate-x-0';
+                toast.style.opacity = 1;
+            }, 10);
+
+            // Fade out and remove
+            setTimeout(() => {
+                toast.style.transform = 'translate-x-full';
+                toast.style.opacity = 0;
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // 更新驗證狀態的 UI
+        function updateAuthStatusUI(loggedIn, uid = null) {
+            const container = document.getElementById('auth-status-container');
+            if (loggedIn && uid) {
+                // 已登入: 顯示部分 UID 和登出按鈕
+                const displayUid = `${uid.substring(0, 4)}...${uid.substring(uid.length - 4)}`;
+                container.innerHTML = `
+                    <span class="text-xs text-gray-500 hidden sm:inline">科學家 ID:</span>
+                    <span class="font-mono text-xs text-blue-600 p-1 bg-blue-100 rounded-lg shadow-inner">${displayUid}</span>
+                    <button onclick="handleLoginLogout()" class="text-red-500 hover:text-red-700 text-xs ml-2 py-1 px-2 rounded-full hover:bg-red-50 transition duration-150">登出</button>
+                `;
+            } else {
+                // 未登入: 顯示登入按鈕
+                container.innerHTML = `
+                    <button onclick="handleLoginLogout()" 
+                            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 transform hover:scale-105 text-sm">
+                        👤 登入
+                    </button>
+                `;
+            }
+        }
+
+        // 登入/登出處理器
+        async function handleLoginLogout() {
+            if (!auth) {
+                showToast("Firebase 服務尚未準備好。", "error");
+                return;
+            }
+
+            if (auth.currentUser) {
+                // 登出
+                try {
+                    await signOut(auth);
+                    showToast("成功登出！下次見👋", "success");
+                } catch (error) {
+                    console.error("Logout Error:", error);
+                    showToast("登出失敗，請檢查網路。", "error");
+                }
+            } else {
+                // 登入 (使用 Custom Token 或匿名登入)
+                try {
+                    if (initialAuthToken) {
+                         await signInWithCustomToken(auth, initialAuthToken);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+                    showToast("成功登入！匿名科學家已連線。", "success");
+                } catch (error) {
+                    console.error("Login Error:", error);
+                    showToast("登入失敗，請稍後再試。", "error");
+                }
+            }
+        }
+
         // *** Modal 相關功能 ***
         const feedbackModal = document.getElementById('feedback-modal');
 
         function openFeedbackModal() {
+            const nameInput = document.getElementById('name');
+            const nameLabel = document.getElementById('name-label');
+            
+            // 檢查是否登入，並自動填寫
+            if (userId) {
+                nameInput.value = `ID: ${userId}`;
+                nameInput.placeholder = "已自動填入您的使用者 ID";
+                nameInput.disabled = true; // 鎖定輸入框
+                nameInput.classList.add('bg-gray-100');
+                nameLabel.innerHTML = `您的暱稱 <span class="text-green-600 font-normal">(已自動填入，不可修改)</span>`;
+            } else {
+                nameInput.value = "";
+                nameInput.placeholder = "例如：熱愛科學的同學";
+                nameInput.disabled = false;
+                nameInput.classList.remove('bg-gray-100');
+                nameLabel.innerHTML = `您的暱稱 (選填)`;
+            }
+
             feedbackModal.classList.remove('hidden');
             feedbackModal.classList.add('flex');
             // 讓 Modal 內容有一個彈入的動畫效果
@@ -204,21 +379,18 @@
         }
 
         function sendFeedback() {
-            const name = document.getElementById('name').value.trim();
+            // 從輸入框或自動填入的值獲取暱稱
+            const nameInput = document.getElementById('name');
             const suggestion = document.getElementById('suggestion').value.trim();
+            const rawName = nameInput.value.trim();
 
             if (suggestion === "") {
-                // 這裡不用 alert，而是使用簡單的 UI 提示
-                const form = document.getElementById('feedback-form');
-                const errorMsg = document.createElement('p');
-                errorMsg.textContent = "請至少填寫建議內容！";
-                errorMsg.className = "text-red-500 text-sm mt-2";
-                form.appendChild(errorMsg);
-                setTimeout(() => form.removeChild(errorMsg), 3000);
+                showToast("請至少填寫建議內容！", "error");
                 return;
             }
 
-            const senderName = name ? `來自 ${name}` : "匿名讀者";
+            // 判斷是登入 ID 還是手動輸入的暱稱
+            const senderName = userId ? `已登入 ID: ${userId}` : (rawName || "匿名讀者");
             const subject = encodeURIComponent(`老董科學 - 網站改進建議 (${senderName})`);
             
             // 格式化郵件內容
@@ -233,7 +405,7 @@ ${suggestion}
 ==================================================
 感謝您的創作！
 
-寄件人暱稱: ${name || '匿名'}
+寄件人資訊: ${senderName}
 文章 ID: ${currentArticleId}
             `.trim();
             
@@ -615,12 +787,22 @@ ${suggestion}
             }, 200); // 200 毫秒延遲
         }
 
-        // 頁面載入完成後，載入預設文章
+        // 頁面載入完成後，執行初始化和載入預設文章
         window.onload = function() {
-            // 設定 CSS 轉換，讓漸出漸入效果順暢
+            // 1. 初始化 Firebase 和驗證
+            initializeFirebaseAndAuth(); 
+
+            // 2. 載入文章
             mainContentEl.style.transition = 'opacity 0.2s ease-in-out';
             loadArticle(currentArticleId); 
         };
+        
+        // 將這些函數附加到 window，使其能在 HTML 內聯事件中被呼叫
+        window.openFeedbackModal = openFeedbackModal;
+        window.closeFeedbackModal = closeFeedbackModal;
+        window.sendFeedback = sendFeedback;
+        window.loadArticle = loadArticle;
+        window.handleLoginLogout = handleLoginLogout;
 
     </script>
 </body>
