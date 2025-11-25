@@ -114,8 +114,9 @@
                            class="article-link block py-1.5 px-3 rounded-lg text-sm">
                             <span class="font-bold">#4</span> 手指頭的極限：超進化進位制
                         </a>
-                        <a href="#" id="link-102" class="block text-gray-400 hover:text-gray-500 transition duration-150 py-1.5 px-3 text-sm cursor-default">
-                            <span class="font-medium">#5</span> 程式設計師的老闆娘乘積 (預告)
+                        <a href="#" id="link-102" onclick="loadArticle(102); return false;"
+                           class="article-link block py-1.5 px-3 rounded-lg text-sm">
+                            <span class="font-medium">#5</span> 除以零的危機：為什麼無解？
                         </a>
                     </nav>
 
@@ -189,7 +190,7 @@
         const USER_EMAIL = "placeholder@example.com"; 
         
         // 文章的閱讀順序
-        const articleOrder = [1, 2, 3, 101];
+        const articleOrder = [1, 2, 3, 101, 102];
 
         // Firebase Global Variables (MUST BE USED)
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
@@ -551,6 +552,75 @@ ${suggestion}
                             <p class="mt-2 text-center text-xl font-extrabold text-gray-800">「我沒有作弊，只是對數字做了一點『手術 (手指運算術)』」</p>
                         </div>
                     </div>`
+            },
+            102: {
+                title: "除以零的危機：為什麼無解？",
+                subtitle: "數學的禁令：除以零會摧毀邏輯",
+                content: `<div class="space-y-6 text-gray-700">
+                    <div class="p-3 rounded-lg bg-gray-50 border border-gray-200">
+                        <p class="font-bold text-lg">小白: 10除以0等於多少</p>
+                        <p class="font-bold text-indigo-700">老董：除以零是個數學上無意義的操作</p>
+                        <p class="mt-2">小白：但不是只是無意義就沒了，哪裡不對了</p>
+                    </div>
+                    
+                    <div class="pl-4 border-l-4 border-green-300 bg-green-50 p-3 rounded-lg">
+                        <p>你想想看，10 ÷ 5 就是把 10 顆蘋果分給 5 個人，一個人可以得到 2 顆蘋果。</p>
+                        <p>這代表：10 ÷ 0 就是把 10 顆蘋果分給 0 個人，但都沒有人了，你是要分什麼？</p>
+                        <p>因此…此題無解。</p>
+                    </div>
+                
+
+                    <div class="pl-4 border-l-4 border-blue-300 bg-blue-50 p-3 rounded-lg">
+                        <p>小白：等等，分蘋果？會不會太「不數學」了</p>
+                        <p>好的，我用你小學學過的數學說明：</p>
+                        <p>10 ÷ 5 = 2，5 × 2 = 10，因此 10 ÷ 0 = ??，0 × ?? = 10，但是任何數乘 0 都是 0</p>
+                        <p>因此…此題無解。</p>
+                    </div>
+
+                    <div class="pl-4 border-l-4 border-purple-300 bg-purple-50 p-3 rounded-lg">
+                        <p>小白：無解無解都給你無解就好了！說不定 ?? × 0 真的是 10 啊！?? 他就是那麼神奇啊！</p>
+                        <p>老董：好，假設 ?? × 0 真的是 10，來看會發生什麼事：</p>
+                        <ol class="list-decimal list-inside ml-4 mt-2">
+                            <li>從 1×0 = 10×0（同時乘以 0）開始。</li>
+                            <li>對等式兩邊做相同的運算（例如 ÷0），變成：</li>
+                            <li>1×0÷0=10×0÷0，把10×0位置交換，變成：</li>
+                            <li>1×0÷0=0×10÷0，前面說10÷0=??，變成：</li>
+                            <li>1×0÷0=0×??， 前面說0×??是10，變成：</li>
+                            <li>1×0÷0=10，把×0÷0消掉，變成：</li>
+                            <li>1=10，但這肯定是不對的！</li>
+                        </ol>
+                        <p class="mt-2">因此...此題無解！</p>
+                    </div>
+
+                    <div class="pl-4 border-l-4 border-red-300 bg-red-50 p-3 rounded-lg">
+                        <p>小白：一定有其它方法…分數！除法可以轉成分數！</p>
+                        <p>老董：好的，用分數證明除以0是錯誤的</p>
+                        <ul class="list-disc list-inside ml-4">
+                            <li>1 ÷ 1 = 1</li>
+                            <li>1 ÷ 0.001 = 1000</li>
+                            <li>1 ÷ 0.0000001 = 10000000</li>
+                        </ul>
+                        <p>當除數越接近0十，數值就越大，這意味著如果我們除以0，值就是∞</p>
+                        <p class="mt-2">但是!</p>
+                        <ul class="list-disc list-inside ml-4">
+                            <li>-1 ÷ 1 = -1</li>
+                            <li>-1 ÷ 0.001 = -1000</li>
+                            <li>-1 ÷ 0.0000001 = -10000000</li>
+                        </ul>
+                        <p>當除數越接近0時，值就越小，這意味著如果我們除以0，值就是 -∞</p>
+                        <p class="mt-2">發現了嗎</p>
+                        <p>一個說是∞，一個說是-∞，但∞不可能等於-∞</p>
+                        <p>因此...此題無解！！</p>
+                    </div>
+
+                    <div class="p-4 rounded-lg bg-yellow-50 border-l-4 border-yellow-300">
+                        <p class="font-bold">結論：</p>
+                        <p>數學雖然看似自由，但其中也藏著向除以0那樣危險的東西</p>
+                        <p>數學系統建立在嚴謹的邏輯和公理之上。除以零的無意義性，不是因為我們找不到答案，而是因為如果我們允許它存在，整個數學大廈的根基就會被矛盾和不確定性所摧毀。</p>
+                        <p>因此，除以零並非只是「無解」，它是一個會導致邏輯崩潰的運算，是我們為了保護數學世界的完整性和可靠性所設下的最重要的一條禁令。</p>
+                        <p class="mt-2">小白：等著看，下一篇我一定會來反擊的。</p>
+                    </div>
+                </div>`
             },
         };
 
