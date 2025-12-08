@@ -118,6 +118,10 @@
                            class="article-link block py-1.5 px-3 rounded-lg text-sm">
                             <span class="font-medium">#5</span> 除以零的危機：為什麼無解？
                         </a>
+                        <a href="#" id="link-103" onclick="loadArticle(103); return false;"
+                           class="article-link block py-1.5 px-3 rounded-lg text-sm">
+                            <span class="font-medium">#6</span> 剪刀石頭布的心理戰：你剛剛出了什麼？
+                        </a>
                     </nav>
 
                 </div>
@@ -190,7 +194,7 @@
         const USER_EMAIL = "placeholder@example.com"; 
         
         // 文章的閱讀順序
-        const articleOrder = [1, 2, 3, 101, 102];
+        const articleOrder = [1, 2, 3, 101, 102, 103];
 
         // Firebase Global Variables (MUST BE USED)
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
@@ -621,6 +625,32 @@ ${suggestion}
                         <p class="mt-2">小白：等著看，下一篇我一定會來反擊的。</p>
                     </div>
                 </div>`
+            },
+            103: {
+                title: "剪刀石頭布的心理戰：你剛剛出了什麼？",
+                subtitle: "一場關於選擇與機率的心智遊戲",
+                content: `<div class="space-y-6 text-gray-700">
+                        <p class="text-lg font-medium">剪刀石頭布，這個遊戲不僅僅是手速的較量，更是心理戰與機率的博弈。在這篇文章中，我們將深入探討這個遊戲背後的科學原理，並揭示如何運用這些原理來提升你的勝率。</p>
+                        
+                        <h3 class="text-2xl font-bold text-red-600 border-b pb-1">心理戰：預測對手的心思</h3>
+                        <p>在剪刀石頭布的對決中，勝負往往在於誰能更準確地預測對手的選擇。了解對手的習慣、情緒以及可能的心理狀態，都是制定勝利策略的關鍵。</p>
+                        <p class="font-bold text-xl text-yellow-600 bg-yellow-50 p-3 rounded-lg border border-yellow-200">例如：如果你知道對手喜歡在緊張時出「剪刀」，那麼你就可以選擇「石頭」來反制他。</p>
+                        
+                        <h3 class="text-2xl font-bold text-red-600 border-b pb-1">機率：讓隨機變得可預測</h3>
+                        <p>從數學的角度來看，剪刀石頭布是一個典型的隨機遊戲。然而，真正的隨機並不存在於我們的日常生活中。通過觀察和統計，我們可以發現某些選擇出現的頻率遠高於其他選擇。</p>
+                        <p class="font-bold text-xl text-yellow-600 bg-yellow-50 p-3 rounded-lg border border-yellow-200">例如：研究顯示，大多數人在第一次出手時更傾向於選擇「石頭」。因此，對於第一次對決的情況，你可以選擇「布」來增加勝率。</p>
+                        
+                        <h3 class="text-2xl font-bold text-red-600 border-b pb-1">策略：隨機應變的藝術</h3>
+                        <p>單靠一種固定的策略是無法在剪刀石頭布中長期獲勝的。優秀的玩家會根據對手的出手習慣和當前的遊戲情境，隨時調整自己的策略。</p>
+                        <p class="font-bold text-xl text-yellow-600 bg-yellow-50 p-3 rounded-lg border border-yellow-200">例如：如果連續兩局你都出「布」，對手可能會猜測並選擇「剪刀」來反制你。這時候，你可以選擇「石頭」來出其不意地獲勝。</p>
+                        
+                        <hr class="my-6 border-blue-200">
+                        <div class="p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-bold text-blue-700">老董總結：</p>
+                            <p>剪刀石頭布不僅僅是一個簡單的遊戲，它蘊含著深厚的心理學和數學原理。通過對這些原理的理解和運用，我們可以在遊戲中佔據上風，甚至在生活中做出更好的決策。</p>
+                            <p class="mt-2 text-sm text-gray-500">感謝您的閱讀！如果您喜歡這篇文章，請不要忘記按讚和分享哦！</p>
+                        </div>
+                    </div>`
             },
         };
 
