@@ -105,6 +105,10 @@
                            class="article-link block py-1.5 px-3 rounded-lg text-sm">
                             <span class="font-bold">#3</span> 引力大戰！牛頓 vs. 愛因斯坦
                         </a>
+                        <a href="#" id="link-103" onclick="loadArticle(103); return false;"
+                           class="article-link block py-1.5 px-3 rounded-lg text-sm">
+                            <span class="font-medium">#4</span> 猜拳的心理戰：猜拳猜贏的密技
+                        </a>
                     </nav>
                     
                     <!-- 數學類文章 -->
@@ -112,15 +116,15 @@
                     <nav class="space-y-2">
                         <a href="#" id="link-101" onclick="loadArticle(101); return false;" 
                            class="article-link block py-1.5 px-3 rounded-lg text-sm">
-                            <span class="font-bold">#4</span> 手指頭的極限：超進化進位制
+                            <span class="font-bold">#5</span> 手指頭的極限：超進化進位制
                         </a>
                         <a href="#" id="link-102" onclick="loadArticle(102); return false;"
                            class="article-link block py-1.5 px-3 rounded-lg text-sm">
-                            <span class="font-medium">#5</span> 除以零的危機：為什麼無解？
+                            <span class="font-medium">#6</span> 除以零的危機：為什麼無解？
                         </a>
-                        <a href="#" id="link-103" onclick="loadArticle(103); return false;"
+                        <a href="#" id="link-104" onclick="loadArticle(104); return false;"
                            class="article-link block py-1.5 px-3 rounded-lg text-sm">
-                            <span class="font-medium">#6</span> 猜拳的心理戰：猜拳猜贏的密技
+                            <span class="font-medium">#7</span> 為何一加一等於二
                         </a>
                     </nav>
 
@@ -194,7 +198,7 @@
         const USER_EMAIL = "placeholder@example.com"; 
         
         // 文章的閱讀順序
-        const articleOrder = [1, 2, 3, 101, 102, 103];
+        const articleOrder = [1, 2, 3, 103, 101, 102, 104];
 
         // Firebase Global Variables (MUST BE USED)
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
@@ -680,6 +684,65 @@ ${suggestion}
                         </div>
                     </div>`
             },
+            104: {
+                title: "為何一加一等於二(韻文)",
+                subtitle: "從公理到真理：最嚴謹的秘密",
+                content: `<div class="space-y-6 text-gray-700">
+        <div class="p-4 rounded-lg bg-green-50 border border-green-100">
+            <pre class="whitespace-pre-wrap text-gray-800">
+為何一加一等於二
+一條沒根據的規則  一個沒邏輯的胡扯
+唯有公理的法則    他沒有為什麼
+            </pre>
+        </div>
+        <div class="p-4 rounded-lg bg-blue-50 border border-blue-100">
+            <pre class="whitespace-pre-wrap text-gray-800">
+雅皮諾公理
+    說明
+自然數定義
+    構建
+數學的真理
+            </pre>
+        </div>
+        <div class="p-4 rounded-lg bg-purple-50 border border-purple-100">
+            <pre class="whitespace-pre-wrap text-gray-800">
+六的後繼數為七
+零的後繼數為一
+S代表後繼數
+()代表處理數
+數加零時值為數
+()加數時數帶入
+            </pre>
+        </div>
+        <div class="p-4 rounded-lg bg-red-50 border border-red-100">
+            <pre class="whitespace-pre-wrap text-gray-800">
+一加一成後繼數
+S(0) + 1
+括號裡的值帶入
+S(1 + 0)
+數加零時值為數
+S(1)
+數值得出即輸出
+2
+            </pre>
+        </div>
+        <div class="p-4 rounded-lg bg-orange-50 border border-orange-100">
+            <pre class="whitespace-pre-wrap text-gray-800">
+這，就是數學的真理
+最誇張的嚴謹
+最標準的邏輯
+            </pre>
+        </div>
+        <div class="p-4 rounded-lg bg-yellow-50 border border-yellow-100">
+            <pre class="whitespace-pre-wrap text-gray-800">
+關注老董科學
+知識層層堆疊
+與常識告別
+踏入瘋狂境界
+            </pre>
+        </div>
+    </div>`
+},
         };
 
         let currentArticleId = 101; // 預設載入最新的文章
@@ -866,7 +929,7 @@ ${suggestion}
                 
                 <div class="mt-8 pt-6 border-t-4 border-dashed border-gray-200">
                     <h4 class="text-xl font-bold text-indigo-600 mb-4">喜歡這篇文章嗎？按個讚吧！</h4>
-                    <div id="like-section" class="py-4 px-6 bg-indigo-50 rounded-xl shadow-inner flex justify-center sm:justify-start">
+                                       <div id="like-section" class="py-4 px-6 bg-indigo-50 rounded-xl shadow-inner flex justify-center sm:justify-start">
                         <!-- 按讚按鈕與計數器將在此處由 setupLikeListener 載入 -->
                         <div class="text-gray-500">載入按讚狀態...</div>
                     </div>
