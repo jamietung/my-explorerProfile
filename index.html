@@ -105,9 +105,13 @@
                            class="article-link block py-1.5 px-3 rounded-lg text-sm">
                             <span class="font-bold">#3</span> 引力大戰！牛頓 vs. 愛因斯坦
                         </a>
-                        <a href="#" id="link-103" onclick="loadArticle(103); return false;"
+                        <a href="#" id="link-4" onclick="loadArticle(4); return false;"
                            class="article-link block py-1.5 px-3 rounded-lg text-sm">
                             <span class="font-medium">#4</span> 猜拳的心理戰：猜拳猜贏的密技
+                        </a>
+                        <a href="#" id="link-5" onclick="loadArticle(5); return false;"
+                           class="article-link block py-1.5 px-3 rounded-lg text-sm">
+                            <span class="font-medium">#5</span> 運用量子力學，實現超能力！
                         </a>
                     </nav>
                     
@@ -116,15 +120,15 @@
                     <nav class="space-y-2">
                         <a href="#" id="link-101" onclick="loadArticle(101); return false;" 
                            class="article-link block py-1.5 px-3 rounded-lg text-sm">
-                            <span class="font-bold">#5</span> 手指頭的極限：超進化進位制
+                            <span class="font-bold">#6</span> 手指頭的極限：超進化進位制
                         </a>
                         <a href="#" id="link-102" onclick="loadArticle(102); return false;"
                            class="article-link block py-1.5 px-3 rounded-lg text-sm">
-                            <span class="font-medium">#6</span> 除以零的危機：為什麼無解？
+                            <span class="font-medium">#7</span> 除以零的危機：為什麼無解？
                         </a>
-                        <a href="#" id="link-104" onclick="loadArticle(104); return false;"
+                        <a href="#" id="link-103" onclick="loadArticle(103); return false;"
                            class="article-link block py-1.5 px-3 rounded-lg text-sm">
-                            <span class="font-medium">#7</span> 為何一加一等於二(韻文)
+                            <span class="font-medium">#8</span> 為何一加一等於二(韻文)
                         </a>
                     </nav>
 
@@ -198,7 +202,7 @@
         const USER_EMAIL = "dyc0923@apps.ntpc.edu.tw"; 
         
         // 文章的閱讀順序
-        const articleOrder = [1, 2, 3, 103, 101, 102, 104];
+        const articleOrder = [1, 2, 3, 4, 5, 101, 102, 103];
 
         // Firebase Global Variables (MUST BE USED)
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
@@ -515,6 +519,106 @@ ${suggestion}
                         <div class="p-4 rounded-lg shadow-md speaker-host"><p class="font-bold text-blue-700">老董：</p><p class="text-gray-700">真是一場精彩的對決！沒想到引力的發明者牛頓竟然輸給了愛因斯坦，那麼這次的勝利就獻給－愛因斯坦！記得關注「老董科學」在「老」之前搞「董」!</p></div>
                     </div>`
             },
+            4: {
+                title: "猜拳的心理戰：猜拳猜贏的密技",
+                subtitle: "猜拳－關於選擇與機率的心智遊戲",
+                content: `<div class="space-y-6 text-gray-700">
+                        <p class="text-lg font-medium">猜個拳～剪刀石頭布，記住你剛剛出了什麼，待會揭密…</p>
+                        <p>每次只要和朋友意見不同時就會玩猜拳，你可能覺得這是個隨機遊戲，沒有一定的策略，那你錯了！這是個結合心理學、統計學、機率、行為模式…的複雜遊戲，他是有技巧的，現在我來揭曉你剛剛出了什麼－剪刀，你有比較大的機率會出剪刀，猜中了嗎？我來分析一下原因：</p>
+                        <ol class="list-decimal list-inside ml-4 mt-2">
+                            <li>這篇文章很長，你會讀很快</li>
+                            <li>因為看很快，你通常不會思考太多，所以第一拳通常會出剪刀</li>
+                            <li>在猜拳時喊很快也可以製造同樣的效果</li>
+                        </ol>
+                        <h3 class="text-2xl font-bold text-red-600 border-b pb-1">心理戰：預測對手的心思</h3>
+                        <p>剪刀，是你在毫無警覺性、沒有準備、壓力較小、是對戰第一次出拳時最常做出的選擇，另一個小技巧，如果你比對方高、你們不認識或對方壓力很大，他出布的機率就會比較小</p>
+                        <p class="font-bold text-xl text-yellow-600 bg-yellow-50 p-3 rounded-lg border border-yellow-200">因此他只剩剪刀和石頭可以出，那你當然要出石頭</p>
+                        <p>再來 對手如果是你朋友，他通常不會出和之前一樣的</p>
+                        <p class="font-bold text-xl text-green-600 bg-green-50 p-3 rounded-lg border border-green-200">如果你們平手，那麼他只剩剪刀和布可以出，當然要出剪刀</p>
+                        <p>第三次也是如此，你要出布。</p>
+
+                        <p class="mt-2 text-center text-xl font-extrabold text-gray-800">但是！</p>
+                        <p>你以為就這麼簡單嗎？其實剛才說的只是用於你朋友，因為他不會把輸贏看得太重，可以很輕鬆地玩(但如果你的朋友不是這種，哪你可能比較適合下面作法)，如果你和陌生人猜拳而且輸贏很重要，請看下面：</p>
+                        <h3 class="text-2xl font-bold text-red-600 border-b pb-1">機率：讓隨機變得可預測</h3>
+                        <p>在統計學裡：</p>
+                        <ul class="list-disc list-inside ml-4">
+                            <li>剪刀是最少人出的，因為它形狀最複雜、在潛意識裡感覺最弱、最模稜兩可的</li>
+                            <li>最多人會出石頭，因為這動作讓人有安全感、有力量感</li>
+                        </ul>
+                        <div class="p-4 rounded-lg bg-blue-50 border-l-4 border-blue-300">
+                            <p>如果他不會出剪刀而且會出石頭，那他就只剩石頭或布可以出，你就要出布，這會是最好的選擇。</p>
+                        </div>
+                        <p>再介紹個通用解法(陌生人或朋友都適用)，如果對方把「剪刀石頭布」喊得很快，你不會有太多時間去思考，你會照著你的直覺出拳，如果你是中低年級，你的規律通常是:</p>
+                        <p class="mt-2 text-center text-xl font-extrabold text-gray-800">剪刀-石頭-布… 或 剪刀-布-石頭…</p>
+                        <p class="text-lg font-medium">如果不是中低年級，通常你的直覺會有難以預測的規律，但神奇的是，同年紀的人竟然會有同樣的規律！</p>
+                        <p>所以如果你第一局贏了，接下來你有很大的機率會繼續贏下去，反之 如果第一局輸了，請違反直覺，出最奇怪的拳，這會是最好的選擇。</p>
+                        
+                        <h3 class="text-2xl font-bold text-red-600 border-b pb-1">心理作用：猜贏最輕鬆的方式</h3>
+                        <p>上說得好複雜，有沒有最輕鬆猜贏的方式</p>
+                        <p class="text-lg font-medium">有，那招叫「心理作用」</p>
+                        <p>現在，不要多想，告訴自己:「我很強，這篇文章很有用，我以後一定會猜贏」
+                        <p class="font-bold text-xl text-purple-500 bg-purple-50 p-3 rounded-lg border border-purple">這想法會在意識裡擴散，在這之後，神奇的是發生了
+                            <p class="mt-2 text-center text-xl font-extrabold text-gray-800">你不記得太多猜拳技巧(或全光)，但你贏了，贏了好多局，成為猜拳大師！</p>
+                            <p class="mt-2 text-sm text-gray-500">這就發生在我身上</p>
+                        </p>
+                        <p>也許你現在不相信，但隨著時間的推移，你會有感覺的</p>
+                        <p>但...為什麼會這樣</p>
+                        <div class="p-4 rounded-lg bg-pink-50 border-l-4 border-pink-300">其實什麼都沒改變，你的勝率沒有提高，別人也沒有被你影響而變爛，不過你的潛意識已經吸收了這些資訊，你的態度改變了，你相信你會贏，所以你只會記住自己贏的時刻，忘記你曾經輸過，就好像你一直在贏，這就是心理作用的力量</p> </div>
+                        
+                        <hr class="my-6 border-blue-200">
+                        <div class="p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-bold text-blue-700">老董總結：</p>
+                            <p>剪刀石頭布不僅僅是一個簡單的遊戲，它蘊含著深厚的心理學和數學原理。通過對這些原理的理解和運用，我們可以在遊戲中佔據上風，甚至在生活中做出更好的決策。</p>
+                            <p class="mt-2 text-sm text-gray-500">感謝您的閱讀！如果您喜歡這篇文章，請不要忘記按讚和分享哦！</p>
+                        </div>
+                    </div>`
+            },
+            5: {
+                title: "運用量子力學，實現超能力！",
+                subtitle: "超能力只存在於科幻小說嗎？還是真的能實現？",
+                content: `<div class="space-y-6 text-gray-700">
+                        <p>我知道你想要超能力，別覺得這不可能，這篇文章叫是要證明超能力是可以達成的，廢話不多說，開始啦！</p>
+                        <h3 class="text-2xl font-bold text-red-600 border-b pb-1">超能力 1：隔空取物</h3>
+                        <p>想像一下：</p>
+                        <div class="p-4 rounded-lg bg-purple-50 border-l-4 border-purple-300">
+                            <p>星期一，你被爸爸叫醒去上學，你知道你應該先推開棉被去刷牙，但你很累，完全不想，這時你拿起一個像手電筒的東西，輕輕地按一按，瞬間，棉被自己飛走，牙刷自己幫你刷牙，多棒！</p>
+                        </div>
+                        <p>這就是「隔空取物」，主要原理是利用光學鑷子，光可以由粒子組成，如果光是粒子，那當它撞擊物體時就會產生推力，這代表只要光線夠強，就能把物體向前推。</p>
+                        <p>那…該如何把東西向後拉呢？只要能讓光折射，就能利用反作用力把光拉回能量最強的地方，看起來就像是向後拉了，所以隔空取物非常科學！</p>
+                        <h3 class="text-2xl font-bold text-red-600 border-b pb-1">超能力 2：影分身之術</h3>
+                        <div class="p-4 rounded-lg bg-purple-50 border-l-4 border-purple-300">
+                            <p>到學校後，馬上考試了，考卷發下來，雖然你會寫，但你不想寫，你拿起一個像眼罩的東西，突然，你分身成兩個，分身在學校寫考卷，而你在家裡打電動，太棒了！</p>
+                        </div>
+                        <p>這就是「影分身之術」，主要原理是利用量子疊加態，雖然理論可行，但技術上難如登天。一顆粒子在不被觀測到的狀況下可以同時在兩個(或更多)位置，換句話說，你的粒子可以同時在學校又在家裡。</p>
+                        <p>那…分身會不會和你爭論誰是本尊？不會，疊加只有在沒人看到的狀態下才生效，也就是說，你根本沒機會見到分身，更不用說會吵起來啦，所以影分身之術非常科學又安全！</p>
+                        <h3 class="text-2xl font-bold text-red-600 border-b pb-1">超能力 3：心電感應</h3>
+                        <div class="p-4 rounded-lg bg-purple-50 border-l-4 border-purple-300">
+                            <p>你回家了，你想找你朋友聊聊天，但你的手機被沒收了，這時，你拿起一個像玻璃方塊的東西，馬上，你可以只是在心裡想就可以直接和他說話，完全不用打字，這就是所謂的莫逆之交嗎？</p>
+                        </div>
+                        <p>這就是「心電感應」，主要原理是利用量子糾纏，我想人類對於這塊還有很長一條路要走。若兩顆粒子又有特定關係，那麼當其中一顆粒子的特性改變時，另一方也會瞬間改變，所以只要改變想法(在心裡說話)就能讓對方聽到。</p>
+                        <p>那…這會斷線、延遲嗎？完全不會，糾纏是不需要網路而且超光速，量子網路真是四通八達啊！所以心電感應非常科學又安全又快速！</p>
+                        <h3 class="text-2xl font-bold text-red-600 border-b pb-1">超能力 4：預言</h3>
+                        <div class="p-4 rounded-lg bg-purple-50 border-l-4 border-purple-300">
+                            <p>考完試了，你迫不及待的想知道分數，可惜還要再等兩個禮拜，你沒耐心了，你拿起一個像攝相機的東西，然後安穩的睡著了，你做了個好夢，一個非常逼真的夢，你考了95分，而且還成真了！</p>
+                        </div>
+                        <p>這就是「預言」，主要原理是利用延遲選擇，這大概會是最晚實現的。你現在的行為會改變以前發生的事，這意味著你只要你身上每顆粒子的特性就可以知道你的未來會長怎樣。</p>
+                        <p>那…如果我故意不照著預言的內容做呢？預言沒有失靈，在另一個平行宇宙中，你已經照著做了，而且只有在你故意時才會發生，因此不用擔心它失靈！所以預言非常科學又安全又快速又準確！</p>
+                        <hr class="my-6 border-blue-200">
+                        <p>你的生活因為有了超能力而非常方便，但很快的，你厭倦了這樣的生活，你發現：</p>
+                        <ul class="list-disc list-inside ml-4">
+                            <li>你的隔空取物讓你變得很危險，你只要一生氣，世界都因你而毀滅，漸漸地，你失去了朋友</li>
+                            <li>你的影分身之術讓你感受不到成就感，因為你不用努力，慢慢地，你的人生失去了目標</li>
+                            <li>你的心電感應讓你的隱私被朋友看光，成了大家的笑柄，逐漸的，你失去了信心，做什麼事都失敗</li>
+                            <li>你的預言讓你的生活變得無趣，因為你早就料到了好事，發生時也不感到驚喜，緩緩的，你的生活失去意義</li>
+                        </ul>
+                        <p>這時，你隔空抓到了老董、你的分身變成了老董、你的心電感應連上了老董、甚至連你的預言都只剩老董</p>
+                        <p class="mt-2 text-center text-xl font-extrabold text-gray-800">「也許…關注老董科學會好一些...」</p>
+                        <div class="p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p>在你「老」之前，你「懂」了，生命中最珍貴的不是隨心所欲的結果，而是那些在未知與努力中，一點一滴累積起來的真實感受。</p>
+                        </div>
+                </div>`
+            }, 
+
             101: {
                 title: "手指頭的極限：超進化進位制",
                 subtitle: "從幼稚園到百萬大關，加法直式居然輸給了你的十根手指？",
@@ -630,61 +734,8 @@ ${suggestion}
                     </div>
                 </div>`
             },
-            103: {
-                title: "猜拳的心理戰：猜拳猜贏的密技",
-                subtitle: "猜拳－關於選擇與機率的心智遊戲",
-                content: `<div class="space-y-6 text-gray-700">
-                        <p class="text-lg font-medium">猜個拳～剪刀石頭布，記住你剛剛出了什麼，待會揭密…</p>
-                        <p>每次只要和朋友意見不同時就會玩猜拳，你可能覺得這是個隨機遊戲，沒有一定的策略，那你錯了！這是個結合心理學、統計學、機率、行為模式…的複雜遊戲，他是有技巧的，現在我來揭曉你剛剛出了什麼－剪刀，你有比較大的機率會出剪刀，猜中了嗎？我來分析一下原因：</p>
-                        <ol class="list-decimal list-inside ml-4 mt-2">
-                            <li>這篇文章很長，你會讀很快</li>
-                            <li>因為看很快，你通常不會思考太多，所以第一拳通常會出剪刀</li>
-                            <li>在猜拳時喊很快也可以製造同樣的效果</li>
-                        </ol>
-                        <h3 class="text-2xl font-bold text-red-600 border-b pb-1">心理戰：預測對手的心思</h3>
-                        <p>剪刀，是你在毫無警覺性、沒有準備、壓力較小、是對戰第一次出拳時最常做出的選擇，另一個小技巧，如果你比對方高、你們不認識或對方壓力很大，他出布的機率就會比較小</p>
-                        <p class="font-bold text-xl text-yellow-600 bg-yellow-50 p-3 rounded-lg border border-yellow-200">因此他只剩剪刀和石頭可以出，那你當然要出石頭</p>
-                        <p>再來 對手如果是你朋友，他通常不會出和之前一樣的</p>
-                        <p class="font-bold text-xl text-green-600 bg-green-50 p-3 rounded-lg border border-green-200">如果你們平手，那麼他只剩剪刀和布可以出，當然要出剪刀</p>
-                        <p>第三次也是如此，你要出布。</p>
 
-                        <p class="mt-2 text-center text-xl font-extrabold text-gray-800">但是！</p>
-                        <p>你以為就這麼簡單嗎？其實剛才說的只是用於你朋友，因為他不會把輸贏看得太重，可以很輕鬆地玩(但如果你的朋友不是這種，哪你可能比較適合下面作法)，如果你和陌生人猜拳而且輸贏很重要，請看下面：</p>
-                        <h3 class="text-2xl font-bold text-red-600 border-b pb-1">機率：讓隨機變得可預測</h3>
-                        <p>在統計學裡：</p>
-                        <ul class="list-disc list-inside ml-4">
-                            <li>剪刀是最少人出的，因為它形狀最複雜、在潛意識裡感覺最弱、最模稜兩可的</li>
-                            <li>最多人會出石頭，因為這動作讓人有安全感、有力量感</li>
-                        </ul>
-                        <div class="p-4 rounded-lg bg-blue-50 border-l-4 border-blue-300">
-                            <p>如果他不會出剪刀而且會出石頭，那他就只剩石頭或布可以出，你就要出布，這會是最好的選擇。</p>
-                        </div>
-                        <p>再介紹個通用解法(陌生人或朋友都適用)，如果對方把「剪刀石頭布」喊得很快，你不會有太多時間去思考，你會照著你的直覺出拳，如果你是中低年級，你的規律通常是:</p>
-                        <p class="mt-2 text-center text-xl font-extrabold text-gray-800">剪刀-石頭-布… 或 剪刀-布-石頭…</p>
-                        <p class="text-lg font-medium">如果不是中低年級，通常你的直覺會有難以預測的規律，但神奇的是，同年紀的人竟然會有同樣的規律！</p>
-                        <p>所以如果你第一局贏了，接下來你有很大的機率會繼續贏下去，反之 如果第一局輸了，請違反直覺，出最奇怪的拳，這會是最好的選擇。</p>
-                        
-                        <h3 class="text-2xl font-bold text-red-600 border-b pb-1">心理作用：猜贏最輕鬆的方式</h3>
-                        <p>上說得好複雜，有沒有最輕鬆猜贏的方式</p>
-                        <p class="text-lg font-medium">有，那招叫「心理作用」</p>
-                        <p>現在，不要多想，告訴自己:「我很強，這篇文章很有用，我以後一定會猜贏」
-                        <p class="font-bold text-xl text-purple-500 bg-purple-50 p-3 rounded-lg border border-purple">這想法會在意識裡擴散，在這之後，神奇的是發生了
-                            <p class="mt-2 text-center text-xl font-extrabold text-gray-800">你不記得太多猜拳技巧(或全光)，但你贏了，贏了好多局，成為猜拳大師！</p>
-                            <p class="mt-2 text-sm text-gray-500">這就發生在我身上</p>
-                        </p>
-                        <p>也許你現在不相信，但隨著時間的推移，你會有感覺的</p>
-                        <p>但...為什麼會這樣</p>
-                        <div class="p-4 rounded-lg bg-pink-50 border-l-4 border-pink-300">其實什麼都沒改變，你的勝率沒有提高，別人也沒有被你影響而變爛，不過你的潛意識已經吸收了這些資訊，你的態度改變了，你相信你會贏，所以你只會記住自己贏的時刻，忘記你曾經輸過，就好像你一直在贏，這就是心理作用的力量</p> </div>
-                        
-                        <hr class="my-6 border-blue-200">
-                        <div class="p-4 rounded-lg bg-blue-50 border border-blue-200">
-                            <p class="font-bold text-blue-700">老董總結：</p>
-                            <p>剪刀石頭布不僅僅是一個簡單的遊戲，它蘊含著深厚的心理學和數學原理。通過對這些原理的理解和運用，我們可以在遊戲中佔據上風，甚至在生活中做出更好的決策。</p>
-                            <p class="mt-2 text-sm text-gray-500">感謝您的閱讀！如果您喜歡這篇文章，請不要忘記按讚和分享哦！</p>
-                        </div>
-                    </div>`
-            },
-            104: {
+            103: {
                 title: "為何一加一等於二(韻文)",
                 subtitle: "從公理到真理：最嚴謹的秘密",
                 content: `<div class="space-y-6 text-gray-700">
