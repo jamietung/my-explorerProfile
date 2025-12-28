@@ -16,3 +16,4 @@
 <h3>📢 加入我們的探索！</h3>
 <p>你可以透過左側的目錄展開你的宇宙冒險。看完後別忘了給文章點個<b>❤️ 按讚</b>，或者點擊<b>🚀 意見回饋</b> 告訴老董你還想知道什麼神祕知識。</p>
 <a href="https://jamietung.github.io/my-explorerProfile/"><h2><b>準備好讓你的大腦超進化了嗎？讓我們開始吧！</b></h2></a>
+https://jamietung.github.io/my-explorerProfile/
