@@ -113,6 +113,10 @@
                            class="article-link block py-1.5 px-3 rounded-lg text-sm">
                             <span class="font-medium">#5</span> 運用量子力學，實現超能力！
                         </a>
+                        <a href="#" id="link-6" onclick="loadArticle(6); return false;"
+                           class="article-link block py-1.5 px-3 rounded-lg text-sm">
+                            <span class="font-medium">#6</span> 宇宙會死嗎？宇宙的一生
+                        </a>
                     </nav>
                     
                     <!-- 數學類文章 -->
@@ -202,7 +206,7 @@
         const USER_EMAIL = "dyc0923@apps.ntpc.edu.tw"; 
         
         // 文章的閱讀順序
-        const articleOrder = [1, 2, 3, 4, 5, 101, 102, 103];
+        const articleOrder = [1, 2, 3, 4, 5, 6, 101, 102, 103];
 
         // Firebase Global Variables (MUST BE USED)
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
@@ -618,7 +622,52 @@ ${suggestion}
                         </div>
                 </div>`
             }, 
+            6: {
+                title: "宇宙也會老？138 億歲的它，其實已經在「計畫」死亡了",
+                subtitle: "從0秒到1古戈爾年，揭開宇宙「生老病死」的所有歷程",
+                content: `<div class="space-y-6 text-gray-700">
+                    <p>2025年要結束了！2026、2027…宇宙可以一直延續下去嗎？還是總有一天會死亡？這篇文章就要為你解答宇宙的生老病死，準備好的嗎，讓我們回到西元前138億年...</p>
+                    <h2 class="text-xl font-extrabold text-gray-800 pt-4 border-b border-gray-300 pb-1">🐣宇宙的生:</h2>
+                    <div class="p-4 rounded-lg bg-green-50 border-l-4 border-green-300">
+                        <h3>「碰！」</h3>
+                        <div class="p-4 rounded-lg bg-blue-50 border border-blue-200"><b>老董快報: </b>世界的某處發生劇烈爆炸，不，準確來說，是一顆無限小的點開始急速膨脹了，而那顆點裡的世界就叫做宇宙，順帶一題，時間也誕生了，就在爆炸後的0.000…539秒(小數點後43個0)後誕生了，至今也沒查出宇宙爆炸到時間誕生中間到底發生了什麼。科學家預測宇宙之後還會一直膨脹，膨脹的越來越快，甚至可以超光速，非常的神奇！</div>
+                    </div>
 
+                    <h2 class="text-xl font-extrabold text-gray-800 pt-4 border-b border-gray-300 pb-1">🕰️宇宙的老:</h2>
+                    <div class="p-4 rounded-lg bg-yellow-50 border-l-4 border-yellow-300">
+                        <p class="mt-2 text-sm text-gray-500">讓我們穿越到100兆年後</p>
+                        <p>太陽目前正在發光發熱，但太陽會燒完，當它燒完就會變成白矮星或中子星</p>
+                        <ul class="list-disc list-inside ml-4">
+                            <li>白矮星: 向太陽差不多大的恆星燒完，他會先把外殼噴掉，只剩下中心的部分，少了外殼，他就會被引力往裡面拉(像變小)，直到原子被壓碎(太陽大概只有一顆地球那麼大)，中間那顆核心就叫白矮星</li>
+                            <li>中子星: 比太陽重8倍以上的恆星燒完，會發生一場大爆炸，也會被引力往裡面拉，直到電子被擠到原子核裡，直到變成只有20分之1個台灣的大小，中間那顆核心就叫中子星</li>
+                        </ul>
+                        <p>他們一開始是會亮的，但很快就熄滅了，也就是說宇宙在那時與有一片黑暗，而且這麼殘酷的時期會持續"10000…39個0 "年，就是「1正」年</p>
+                    </div>
+                    
+                    <h2 class="text-xl font-extrabold text-gray-800 pt-4 border-b border-gray-300 pb-1">💊宇宙的病:</h2>
+                    <div class="p-4 rounded-lg bg-red-50 border-l-4 border-red-300">
+                        <p class="mt-2 text-sm text-gray-500">讓我們穿越到1正年後</p>
+                        <p>這時所有的白矮星和中子星也都死光了，他們死後會變成黑洞，也就是說如果所有的恆星都變成黑洞</p>
+                        <p>地球、水星、所有星球都將被黑洞吸走，宇宙就只剩黑洞</p>
+                        <p>正好黑洞也是黑的，宇宙現在一點顏色都沒有了，宇宙基本上已經沒已有意義了，而且這麼沒意義的時期會持續到"10000…100個0 "年，也就是「1古戈爾」年，還有什麼比這更可怕</p>
+                    </div>
+                    
+                    <h2 class="text-xl font-extrabold text-gray-800 pt-4 border-b border-gray-300 pb-1">💀宇宙的死:</h2>
+                    <div class="p-4 rounded-lg bg-purple-50 border-l-4 border-purple-300">
+                        <p class="mt-2 text-sm text-gray-500">讓我們穿越到1古戈爾年後</p>
+                        <p>當然有更慘的，這世界上的每個地方都有成對的虛粒子憑空出現(有正的和負的)，有很快消失，所以看起來像沒發生，但在黑洞附近就不一樣</p>
+                        <p>負的虛粒子會被黑洞吸掉，留下正的虛粒子</p>
+                        <p>當黑洞把負的粒子吸掉後他就會變輕、變小，所以黑洞會越來越小，直到消失，而所有的黑洞都是如此，最後連黑洞都消失了，宇宙不剩任何東西，已經沒意義到了極點，這時就可以稱它為宇宙死亡，所以宇宙可以活1古戈爾年，也算是活夠了吧?!</p>
+                        <br>
+                        <p><b>但是，他真的能活那麼久嗎</b></p>
+                        <p>還記得宇宙在膨脹吧，他膨脹表示粒子和粒子之間的距離要分開，所以當他膨脹的夠大，原子將不再組成任何東西，所有物質和原子將會撕裂，世界只剩下一大團沒有意義的夸克和電子，而且這件事就發生在約160億年後，對比1古戈爾年，我們可以說在它在死之前它早就死了吧?!</p>
+                    </div>
+
+                    <div class="p-4 rounded-lg bg-blue-50 border border-blue-200">
+                        <p>雖然我們不能活到160億年，但我們可以好好的活過每一年，所以…請好好的跨年，並享受2026年吧！也別忘了關注「老董科學」在「老」之前搞「董」！</p>
+                    </div>
+                </div>`
+            },
             101: {
                 title: "手指頭的極限：超進化進位制",
                 subtitle: "從幼稚園到百萬大關，加法直式居然輸給了你的十根手指？",
