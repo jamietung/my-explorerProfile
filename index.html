@@ -128,15 +128,15 @@
                     <nav class="space-y-2">
                         <a href="#" id="link-101" onclick="loadArticle(101); return false;" 
                            class="article-link block py-1.5 px-3 rounded-lg text-sm">
-                            <span class="font-bold">#6</span> 手指頭的極限：超進化進位制
+                            <span class="font-bold">#8</span> 手指頭的極限：超進化進位制
                         </a>
                         <a href="#" id="link-102" onclick="loadArticle(102); return false;"
                            class="article-link block py-1.5 px-3 rounded-lg text-sm">
-                            <span class="font-medium">#7</span> 除以零的危機：為什麼無解？
+                            <span class="font-medium">#9</span> 除以零的危機：為什麼無解？
                         </a>
                         <a href="#" id="link-103" onclick="loadArticle(103); return false;"
                            class="article-link block py-1.5 px-3 rounded-lg text-sm">
-                            <span class="font-medium">#8</span> 為何一加一等於二(韻文)
+                            <span class="font-medium">#10</span> 為何一加一等於二(韻文)
                         </a>
                     </nav>
 
@@ -210,7 +210,7 @@
         const USER_EMAIL = "dyc0923@apps.ntpc.edu.tw"; 
         
         // 文章的閱讀順序
-        const articleOrder = [1, 2, 3, 4, 5, 6, 101, 102, 103];
+        const articleOrder = [1, 2, 3, 4, 5, 6, 7, 101, 102, 103];
 
         // Firebase Global Variables (MUST BE USED)
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
@@ -532,7 +532,7 @@ ${suggestion}
                 subtitle: "猜拳－關於選擇與機率的心智遊戲",
                 content: `<div class="space-y-6 text-gray-700">
                         <p class="text-lg font-medium">猜個拳～剪刀石頭布，記住你剛剛出了什麼，待會揭密…</p>
-                        <p>每次只要和朋友意見不同時就會玩猜拳，你可能覺得這是個隨機遊戲，沒有一定的策略，那你錯了！這是個結合心理學、統計學、機率、行為模式…的複雜遊戲，他是有技巧的，現在我來揭曉你剛剛出了什麼－剪刀，你有比較大的機率會出剪刀，猜中了嗎？我來分析一下原因：</p>
+                        <p>每次只要和朋友意見不同時就會玩猜拳，你可能覺得這是個隨機遊戲，沒有一定的策略，那你錯了！這是個結合心理學、統計學、機率、行為模式…的複雜遊戲，它是有技巧的，現在我來揭曉你剛剛出了什麼－剪刀，你有比較大的機率會出剪刀，猜中了嗎？我來分析一下原因：</p>
                         <ol class="list-decimal list-inside ml-4 mt-2">
                             <li>這篇文章很長，你會讀很快</li>
                             <li>因為看很快，你通常不會思考太多，所以第一拳通常會出剪刀</li>
@@ -546,7 +546,7 @@ ${suggestion}
                         <p>第三次也是如此，你要出布。</p>
 
                         <p class="mt-2 text-center text-xl font-extrabold text-gray-800">但是！</p>
-                        <p>你以為就這麼簡單嗎？其實剛才說的只是用於你朋友，因為他不會把輸贏看得太重，可以很輕鬆地玩(但如果你的朋友不是這種，哪你可能比較適合下面作法)，如果你和陌生人猜拳而且輸贏很重要，請看下面：</p>
+                        <p>你以為就這麼簡單嗎？其實剛才說的只是用於你朋友，因為他不會把輸贏看得太重，可以很輕鬆地玩(但如果你的朋友不是這種，那你可能比較適合下面作法)，如果你和陌生人猜拳而且輸贏很重要，請看下面：</p>
                         <h3 class="text-2xl font-bold text-red-600 border-b pb-1">機率：讓隨機變得可預測</h3>
                         <p>在統計學裡：</p>
                         <ul class="list-disc list-inside ml-4">
@@ -558,7 +558,7 @@ ${suggestion}
                         </div>
                         <p>再介紹個通用解法(陌生人或朋友都適用)，如果對方把「剪刀石頭布」喊得很快，你不會有太多時間去思考，你會照著你的直覺出拳，如果你是中低年級，你的規律通常是:</p>
                         <p class="mt-2 text-center text-xl font-extrabold text-gray-800">剪刀-石頭-布… 或 剪刀-布-石頭…</p>
-                        <p class="text-lg font-medium">如果不是中低年級，通常你的直覺會有難以預測的規律，但神奇的是，同年紀的人竟然會有同樣的規律！</p>
+                        <p class="text-lg font-medium">如果不是中低年級，通常你的直覺會有難以預測的規律，但神奇的是，同年紀的人竟然會有同樣的規律！這就是心理學有趣的地方，不同情況下人們的反應完全不同</p>
                         <p>所以如果你第一局贏了，接下來你有很大的機率會繼續贏下去，反之 如果第一局輸了，請違反直覺，出最奇怪的拳，這會是最好的選擇。</p>
                         
                         <h3 class="text-2xl font-bold text-red-600 border-b pb-1">心理作用：猜贏最輕鬆的方式</h3>
@@ -566,7 +566,7 @@ ${suggestion}
                         <p class="text-lg font-medium">有，那招叫「心理作用」</p>
                         <p>現在，不要多想，告訴自己:「我很強，這篇文章很有用，我以後一定會猜贏」
                         <p class="font-bold text-xl text-purple-500 bg-purple-50 p-3 rounded-lg border border-purple">這想法會在意識裡擴散，在這之後，神奇的是發生了
-                            <p class="mt-2 text-center text-xl font-extrabold text-gray-800">你不記得太多猜拳技巧(或全光)，但你贏了，贏了好多局，成為猜拳大師！</p>
+                            <p class="mt-2 text-center text-xl font-extrabold text-gray-800">你不記得太多猜拳技巧(或全忘光)，但你贏了，贏了好多局，成為猜拳大師！</p>
                             <p class="mt-2 text-sm text-gray-500">這就發生在我身上</p>
                         </p>
                         <p>也許你現在不相信，但隨著時間的推移，你會有感覺的</p>
@@ -693,15 +693,18 @@ ${suggestion}
                     <p class="mt-2 text-sm text-gray-500">這是個很好的藉口讓你可以休息！哈哈！(但這是真的！我可以證明)</p>
                     <h2 class="text-xl font-extrabold text-gray-800 pt-4 border-b border-gray-300 pb-1">2. 精緻化編碼:</h2>
                     <p>我知道社會(或國語)最喜歡考那些瑣碎的東西，馬上考一題，你應該能說出第7課在講什麼，但我問你，少年燒開水的故事中他是在禮拜幾上跆拳道的？你絕對不會記得...那該如何記住瑣碎的東西呢?</p>
-                    <p><b>弄個故事或畫張圖</b>，如果你是要考試，那畫圖會比較有效，不一定要真的畫出來，想像的效果也不錯，但如果你再記一些沒意義東西(例如一些挑戰)，串成一個故事會比較有效，他可以不用合理，有記憶點就好，和其他東西有連結，你就可以把它當成一大塊東西，不再瑣碎了～這也是為什麼你能記住課文，卻記不住裡面的細節</p>
+                    <div class="p-4 rounded-lg bg-purple-50 border border-purple-200">
+                        <p><b>弄個故事或畫張圖</b>，如果你是要考試，那畫圖會比較有效，不一定要真的畫出來，想像的效果也不錯，但如果你再記一些沒意義東西(例如一些挑戰)，串成一個故事會比較有效，他可以不用合理，有記憶點就好，和其他東西有連結，你就可以把它當成一大塊東西，不再瑣碎了～</p>
+                    </div>
+                    <p>這也是為什麼你能記住課文，卻記不住裡面的細節...</p>
                     <p class="mt-2 text-sm text-gray-500">我到現在都還記得日治初期在北部蓋了 街道 下水道 自來水系統 電線桿 西式醫院 學校 銀行，就靠一張圖！</p>
                     <h2 class="text-xl font-extrabold text-gray-800 pt-4 border-b border-gray-300 pb-1">3. 葉克斯-多德森定律:</h2>
                     <p>我們常說「複習不能有壓力」這也是為什麼要用玩遊戲來複習，但<b>【這其實沒用】</b>遊戲會讓你的記憶題專注於快速、遊戲策略，失去思考機會，而且錯的題目通常難以查看(或沒心情看)</p>
-                    <p>其實複習要有一點壓力，告訴自己不記起來會完蛋，這可以使你更容易記起來，但不能過度壓力，我想他的缺點應該不用我說...可以嘗試番茄鐘，叫自己25分鐘讀完一單元，又可以有5分鐘放鬆避免過度壓力帶來的反效果，25分鐘其實是經過精密調整的，他是我們的專心極限(所以學校其實不該上40分鐘)</p>
+                    <p>其實複習要有一點壓力，告訴自己不記起來會完蛋，這可以使你更容易記起來，但不能過度壓力，我想他的缺點應該不用我說...可以嘗試番茄鐘，叫自己25分鐘讀完一單元，又可以有5分鐘放鬆避免過度壓力帶來的反效果，25分鐘其實是經過精密調整的，他是我們的專心極限，一旦超過你就無法專心(所以學校其實不該上40分鐘的)</p>
                     <hr class="my-6 border-blue-200">
-                    <p class="text-cyan-900 text-sm font-medium italic">
-                        「如果一個物理學家不能向他正在清潔地板的工友解釋清楚他的發現，那麼他的發現就沒有什麼價值。」— 拉塞福
-                    </p>
+                        <p class="text-cyan-900 text-sm font-medium italic">
+                            「如果一個物理學家不能向他正在清潔地板的工友解釋清楚他的發現，那麼他的發現就沒有什麼價值。」— 拉塞福
+                        </p>
                     <p>說了那麼多，你真的有學到嗎？當你確定你學完了，去找你的娃娃、AI、或身邊任何東西，告訴它那是什麼，如果你能簡單的將它說一遍，表示你理解它，且不能一字一句照念，才能保證你有吸收，當你成功時，會有成就感，這會使你印象更深刻，所以—和別人分享這文章的內容吧！它能測試你是否學會，還能幫助複習！</p>
                     <div class="p-4 rounded-lg bg-blue-50 border border-blue-200">
                         <p>希望這篇文章對你考試有幫助，如果有，請關注「老董科學」讓你在「老」之前搞「董」！</p>
@@ -767,60 +770,68 @@ ${suggestion}
                     <div class="pl-4 border-l-4 border-green-300 bg-green-50 p-3 rounded-lg">
                         <p>你想想看，10 ÷ 5 就是把 10 顆蘋果分給 5 個人，一個人可以得到 2 顆蘋果。</p>
                         <p>這代表：10 ÷ 0 就是把 10 顆蘋果分給 0 個人，但都沒有人了，你是要分什麼？</p>
-                        <p>因此…此題無解。</p>
+                        <p>因此...他不能被允許！</p>
                     </div>
                 
 
                     <div class="pl-4 border-l-4 border-blue-300 bg-blue-50 p-3 rounded-lg">
                         <p>小白：等等，分蘋果？會不會太「不數學」了</p>
                         <p>好的，我用你小學學過的數學說明：</p>
-                        <p>10 ÷ 5 = 2，5 × 2 = 10，因此 10 ÷ 0 = ??，0 × ?? = 10，但是任何數乘 0 都是 0</p>
-                        <p>因此…此題無解。</p>
+                        <p>10 ÷ 5 = 2，5 × 2 = 10，因此 10 ÷ 0 = <span style="color: blue;">??</span>，0 × <span style="color: blue;">??</span> = 10，但是任何數乘 0 都是 0</p>
+                        <p>因此...他不能被允許！</p>
                     </div>
 
                     <div class="pl-4 border-l-4 border-purple-300 bg-purple-50 p-3 rounded-lg">
-                        <p>小白：無解無解都給你無解就好了！說不定 ?? × 0 真的是 10 啊！?? 他就是那麼神奇啊！</p>
-                        <p>老董：好，假設 ?? × 0 真的是 10，來看會發生什麼事：</p>
+                        <p>小白：無解無解都給你無解就好了！說不定 <span style="color: blue;">??</span> × 0 真的是 10 啊！<span style="color: blue;">??</span> 他就是那麼神奇啊！</p>
+                        <p>老董：好，假設 <span style="color: blue;">??</span> × 0 真的是 10，來看會發生什麼事：</p>
                         <ol class="list-decimal list-inside ml-4 mt-2">
                             <li>從 1×0 = 10×0（同時乘以 0）開始。</li>
-                            <li>對等式兩邊做相同的運算（例如 ÷0），變成：</li>
-                            <li>1×0÷0=10×0÷0，把10×0位置交換，變成：</li>
-                            <li>1×0÷0=0×10÷0，前面說10÷0=??，變成：</li>
-                            <li>1×0÷0=0×??， 前面說0×??是10，變成：</li>
-                            <li>1×0÷0=10，把×0÷0消掉，變成：</li>
+                            <li>對等式兩邊做相同的運算（例如 <span style="color: red;">÷0</span>），變成：</li>
+                            <li>1×0<span style="color: red;">÷0</span>=10×0<span style="color: red;">÷0</span>，把<span style="color: red;">10×0</span>位置交換，變成：</li>
+                            <li>1×0÷0=<span style="color: red;">0×10</span>÷0，前面說10÷0=<span style="color: blue;">??</span>，變成：</li>
+                            <li>1×0÷0=0×<span style="color: blue;">??</span>， 前面說0×<span style="color: blue;">??</span>是10，變成：</li>
+                            <li>1×0÷0=10，把<span style="color: red;">×0÷0</span>消掉，變成：</li>
                             <li>1=10，但這肯定是不對的！</li>
                         </ol>
-                        <p class="mt-2">因此...此題無解！</p>
+                        <p>小白：蛤？有聽沒有懂</p>
+                        <p>好，說簡單一點：</p>
+                        <ol class="list-decimal list-inside ml-4 mt-2">
+                            <li>1×0=10×0，很合理，對吧！</li>
+                            <li>對等式兩邊做相同的運算（例如 <span style="color: red;">÷0</span>），變成：</li>
+                            <li>1×0<span style="color: red;">÷0</span>=10×0<span style="color: red;">÷0</span>，把<span style="color: red;">×0÷0</span>消掉，變成：</li>
+                            <li>1=10，但這肯定是不對的！</li>
+                        </ol>
+                        <p class="mt-2">看見了嗎？你可以堅持除以0，但你就得接受一個所有數字都相等的數學世界，在我們解出<span style="color: blue;">??</span>之前，數學就先崩塌了！因此...他不能被允許！</p>
                     </div>
 
                     <div class="pl-4 border-l-4 border-red-300 bg-red-50 p-3 rounded-lg">
                         <p>小白：一定有其它方法…分數！除法可以轉成分數！</p>
-                        <p>老董：好的，用分數證明除以0是錯誤的</p>
+                        <p>老董：好的，用分數其實也可以證明除以0是錯誤的</p>
                         <ul class="list-disc list-inside ml-4">
                             <li>1 ÷ 1 = 1</li>
                             <li>1 ÷ 0.001 = 1000</li>
                             <li>1 ÷ 0.0000001 = 10000000</li>
                         </ul>
-                        <p>當除數越接近0十，數值就越大，這意味著如果我們除以0，值就是∞</p>
-                        <p class="mt-2">但是!</p>
+                        <p>當除數越接近0時，數值就越大，這意味著如果我們除以0，他就趨向於∞</p>
+                        <p class="mt-2">但是！</p>
                         <ul class="list-disc list-inside ml-4">
                             <li>-1 ÷ 1 = -1</li>
                             <li>-1 ÷ 0.001 = -1000</li>
                             <li>-1 ÷ 0.0000001 = -10000000</li>
                         </ul>
-                        <p>當除數越接近0時，值就越小，這意味著如果我們除以0，值就是 -∞</p>
+                        <p>當除數越接近0時，值就越小，這意味著如果我們除以0，他就趨向於-∞</p>
                         <p class="mt-2">發現了嗎</p>
-                        <p>一個說是∞，一個說是-∞，但∞不可能等於-∞</p>
-                        <p>因此...此題無解！！</p>
+                        <p>一個說是∞，一個說是-∞，但∞總不可能等於-∞吧！</p>
+                        <p>因此...他不能被允許！！</p>
                     </div>
 
                     <div class="p-4 rounded-lg bg-yellow-50 border-l-4 border-yellow-300">
                         <p class="font-bold">結論：</p>
-                        <p>數學雖然看似自由，但其中也藏著向除以0那樣危險的東西</p>
+                        <p>數學雖然看似自由，但其中也藏著像除以0那樣危險的東西</p>
                         <p>數學系統建立在嚴謹的邏輯和公理之上。除以零的無意義性，不是因為我們找不到答案，而是因為如果我們允許它存在，整個數學大廈的根基就會被矛盾和不確定性所摧毀。</p>
-                        <p>因此，除以零並非只是「無解」，它是一個會導致邏輯崩潰的運算，是我們為了保護數學世界的完整性和可靠性所設下的最重要的一條禁令。</p>
-                        <p class="mt-2">小白：等著看，下一篇我一定會來反擊的。</p>
+                        <p>因此，除以零並非只是「無解」，它是一個會導致邏輯崩潰的運算，是我們為了保護數學世界的完整性和可靠性所設下的重要禁令。</p>
                     </div>
+                    <p class="mt-2 text-sm text-gray-500">小白：等著看，下一篇我一定會來反擊的！</p>
                 </div>`
             },
 
@@ -832,7 +843,7 @@ ${suggestion}
             <pre class="whitespace-pre-wrap text-gray-800">
 為何一加一等於二
 一條沒根據的規則  一個沒邏輯的胡扯
-唯有公理的法則    他沒有為什麼
+唯有最嚴謹的法則  他沒有為什麼
             </pre>
         </div>
         <div class="p-4 rounded-lg bg-blue-50 border border-blue-100">
