@@ -138,6 +138,10 @@
                            class="article-link block py-1.5 px-3 rounded-lg text-sm">
                             <span class="font-medium">#10</span> 為何一加一等於二(韻文)
                         </a>
+                        <a href="#" id="link-104" onclick="loadArticle(104); return false;"
+                            class="article-link block py-1.5 px-3 rounded-lg text-sm">
+                            <span class="font-medium">#11</span> 除以零的危機－小白的反擊
+                        </a>
                     </nav>
 
                 </div>
@@ -210,7 +214,7 @@
         const USER_EMAIL = "dyc0923@apps.ntpc.edu.tw"; 
         
         // 文章的閱讀順序
-        const articleOrder = [1, 2, 3, 4, 5, 6, 7, 101, 102, 103];
+        const articleOrder = [1, 2, 3, 4, 5, 6, 7, 101, 102, 103, 104];
 
         // Firebase Global Variables (MUST BE USED)
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
@@ -848,7 +852,7 @@ ${suggestion}
         </div>
         <div class="p-4 rounded-lg bg-blue-50 border border-blue-100">
             <pre class="whitespace-pre-wrap text-gray-800">
-雅皮諾公理
+皮雅諾公理
     說明
 自然數定義
     構建
@@ -894,6 +898,97 @@ S(1)
         </div>
     </div>`
 },
+
+            104: {
+                title: "為何一加一等於二(韻文)",
+                subtitle: "從公理到真理：最嚴謹的秘密",
+                content: `<div class="space-y-6 text-gray-700">
+                    <p class="mt-2 text-sm text-gray-500"><i>本文的公式只是我的猜想，別視為正式學術結論，若你想深入了解，請看「輪理論」。</i></p>
+                    <div class="pl-4 border-l-4 border-green-300 bg-green-50 p-3 rounded-lg">
+                        <p>小白：新悖論新悖論！如果任何數×0都是0；任何數×∞都是∞，那0×∞是多少？我要去和老董說！</p>
+                    </div>
+                    <p>碰～天上掉下的一個大東西擋住了他的路，或者說是雄偉、堅硬符號“J(1)”就擋在小白的路上，但，他看起來並不開心….</p>
+                    <div class="pl-4 border-l-4 border-green-300 bg-green-50 p-3 rounded-lg">
+                        <p>小白：這符號是什麼，等等，不可能！他違反了質能守恆定律和因果律，太奇怪了！</p>
+                    </div>
+                    <div class="pl-4 border-l-4 border-red-300 bg-red-50 p-3 rounded-lg">
+                        <p>J(1)：嗚嗚嗚～數學家們不歡迎我，說數線軸沒有我的容身之處，如今我成了死神，世界的毀滅者，告訴我，1÷0=多少？</p>
+                    </div>
+                    <div class="pl-4 border-l-4 border-green-300 bg-green-50 p-3 rounded-lg">
+                        <p>小白：等等，他會說話，他有生命嗎？嘴巴長在哪裡？喉嚨呢？我一定要好好研究它...</p>
+                    </div>
+                    <p>小白沒有把話說完，因為J(1)看起來很悲傷，看起來不回答他的問題就無法找到老董...</p>
+                    <div class="pl-4 border-l-4 border-green-300 bg-green-50 p-3 rounded-lg">
+                        <p>小白：好吧！回答你的問題，1÷𝑥的𝑥從正數逼近是∞，從負數逼近就是-∞，所以1÷0=∞=-∞！就這樣，滿意了嗎？</p>
+                    </div>
+                    <div class="pl-4 border-l-4 border-red-300 bg-red-50 p-3 rounded-lg">
+                        <p>J(1)：但∞和-∞在數線軸上差那麼遠，怎麼可能一樣，這答案我不滿意！</p>
+                    </div>
+                    <p>他悲傷的說著，越講越激動，慢慢變成紅色，變得越來越大，像是一塊熾熱、火紅的金屬，接著便朝著小白衝了過去，他只好不停地逃跑…</p>
+                    <div class="pl-4 border-l-4 border-green-300 bg-green-50 p-3 rounded-lg">
+                        <p>小白：我必須找到一個分法解釋如何在數線軸上實現∞=-∞</p>
+                    </div>
+                    <p>他絞盡腦汁，卻什麼也想不出來，他只能不停的逃命，跑著跑著，他好像看到了似曾相似的景物</p>
+                    <div class="pl-4 border-l-4 border-green-300 bg-green-50 p-3 rounded-lg">
+                        <p>小白：等等，我回到了原點？啊！這星球是圓的！圓最終會回到原點啊！數線軸看似水平，但將鏡頭無限拉遠其實就是圓的，而∞和-∞正好就在原地上方重疊了，這樣就能完美解釋為何∞=-∞了！</p>
+                    </div>
+                    <div class="pl-4 border-l-4 border-red-300 bg-red-50 p-3 rounded-lg">
+                        <p>J(1)：胡說八道！這答案我不滿意！</p>
+                    </div>
+                    <p>不滿意？哪裡不滿意了！小白開始覺得他有點煩，但沒辦法，一個難纏的敵人</p>
+                    <p>J(1)變得更大、更紅了，而在他背後，無數個符號像飛鏢般朝小白射過來，”1÷1” ”1÷0.1” “1÷0.01”……，落地時，他們變成了相對應的值，一萬、一億……越來越大的怪物不停地攻擊著小白</p>
+                    <div class="pl-4 border-l-4 border-green-300 bg-green-50 p-3 rounded-lg">
+                        <p>小白：數值越來越接近除以0…但這不是重點，重點是我要如何清掉他們？</p>
+                    </div>
+                    <p>他想了又想……×0！任何數×0都是0，也許可以用它來消去那些小怪，但要如何得出0？小白低頭一看，他手邊只有一個”1÷0”，這代表什麼？為什麼會有這個？有用嗎…他一閃避那些怪物的攻擊一邊思考，突然，他腦子裡的燈泡響起</p>
+                    <div class="pl-4 border-l-4 border-green-300 bg-green-50 p-3 rounded-lg">
+                        <p>小白：6÷(-3)=-(6÷3)，那1÷(-0)就等於-(1÷0)，若1÷0=-(1÷0)，那很明顯看得出來，1÷0是0</p>
+                    </div>
+                    <p>在他想通的那一刻，手中的1÷0瞬間變成黑暗、極靜卻有點奇怪的數字0</p>
+                    <div class="pl-4 border-l-4 border-green-300 bg-green-50 p-3 rounded-lg">
+                        <p>小白：只要你們還是數，就得聽規則！</p>
+                    </div>
+                    <p>他手中的「0」沒有重量，但每一次揮擊，無論多大的數，接觸到的怪物就像是被按了刪除鍵一樣瞬間消失，沒有血跡、沒有特效</p>
+                    <div class="pl-4 border-l-4 border-green-300 bg-green-50 p-3 rounded-lg">
+                        小白：現在，只剩你了，大魔王－J(1)
+                    </div>
+                    <p>小白看了他一眼，拿著手中沒有重量的”0”朝他一揮，他沒有消失，反而那一層紅色的外殼碎裂，露出了裡面無比沉重的數字「1」</p>
+                    <div class="pl-4 border-l-4 border-red-300 bg-red-50 p-3 rounded-lg">
+                        <p>J(1)：1÷0不可能是0，如果1÷0=0，那將後兩項相乘得到: 0×0=1，荒謬至極！</p>
+                    </div>
+                    <p>「這就是為什麼我手中的0感覺那麼奇怪嗎？」小白這麼想著...</p>
+                    <div class="pl-4 border-l-4 border-green-300 bg-green-50 p-3 rounded-lg">
+                        小白：為什麼他沒死，怎麼辦怎麼辦，如果1÷0不是0，那還會有什麼答案，0、∞、-∞都猜過了，沒有別的可能了！
+                    </div>
+                    <p class="mt-2 text-center text-xl font-extrabold text-gray-800">「數學的本質在於它的自由。」－喬治·康托爾</p>
+                    <p>小白不知為什麼想起了這段話，這好像是老董曾經和他說過的</p>
+                    <div class="pl-4 border-l-4 border-green-300 bg-green-50 p-3 rounded-lg">
+                        <p>小白：本質是自由？那我要創造，創造一個數，不，是無限多個數，甚至是一個函數，來定義除以0，這可以…</p>
+                    </div>
+                    <p>砰～J(1)重重的擊中了小白，他只好忍著痛繼續和J(1)打鬥，但這一敲似乎讓他有了靈感...</p>
+                    <div class="pl-4 border-l-4 border-green-300 bg-green-50 p-3 rounded-lg">
+                        <p>小白：我想到了！我叫”Jamie”那這函數就叫做”J”吧，他要和除以0有關，那它的定義就是：J(𝑥)= 𝑥÷0，所以J(1) ×0就等於1！欸，J(1)不就是那隻BOSS嗎？</p>
+                    </div>
+                    <p>一切都明白了，小白用”0”揮了一下J(1)，接著他變成了1，所以1只要再乘一次0就會變回0！</p>
+                    <div class="pl-4 border-l-4 border-red-300 bg-red-50 p-3 rounded-lg">
+                        <p>J(1)：你－死－定－了！！</p>
+                    </div>
+                    <p>J(1)已經從悲傷轉化為純粹的憤怒了</p>
+                    <div class="pl-4 border-l-4 border-green-300 bg-green-50 p-3 rounded-lg">
+                        <p>小白：哈哈，原來那麼簡單啊，再乘一次0就結束了～</p>
+                    </div>
+                    <p>J(1)跳到空中朝著小白揮下去，小白也不甘示弱跳起來拿著”0”向他揮打，兩個武器在空中交錯，接著爆炸，突然，小白感覺天旋地轉，他的頭好像受到了撞擊，但他很肯定不是被J(1)打中的，那會是誰？</p>
+                    <div class="pl-4 border-l-4 border-green-300 bg-green-50 p-3 rounded-lg">
+                        <p>小白：好痛！欸，這裡是…我的房間…我……摔下床了？等等，難道說……剛剛的一切…都是夢？</p>
+                    </div>
+                    <p>他突然有點後悔，一切來的太突然，來不及道別，來不及說再見，他做了錯誤的決定，應該是要去找老董，或告訴J(1)他發明的函數，而不是急著把他幹掉，也許他有機會和J(1)成為朋友……</p>
+                    <p>但，一切都太遲了。</p>
+                    <p>他坐回床上，不停地回想他的夢境，接著擦乾眼淚，他看見桌上放著他對除以0未完成的研究…</p>
+                    <div class="pl-4 border-l-4 border-green-300 bg-green-50 p-3 rounded-lg">
+                        <p>小白：好啦！快把我夢到的東西抄到筆記本裡，還有－我要和老董分享我夢的一切，老董，我來反擊了！</p>
+                    </div>
+                </div>`
+            }, 
         };
 
         let currentArticleId = 101; // 預設載入最新的文章
